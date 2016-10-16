@@ -1,0 +1,21 @@
+1.- 01 - PHP:POO+MVC - Crear un framework básico  (estructura básica y patrón MVC) (https://www.youtube.com/watch?v=BO2lzbSNvy0&list=PLMVWdD5bcndrmfgQdYeZqTx-OP8SQilJK)
+	1.1.- MVC
+		1.1.1.- Explicación: Separar código en tres partes modelo, vista y controlador
+		1.1.2.- Modelo: vá la lógica del negocio, se gestiona acceso a datos, formato datos, CRUD. 
+		1.1.3.- Vista: Renderizar los datos traídos desde el modelo, interactúa con el usuario, acá va colocado todo lo del formato de los datos, estilos, archivos java script
+		1.1.4.- Controlador: Se encarga del flujo de la aplicación, buscar un modelo, a través de este buscar los datos, y renderizarlos a través de la vista. También responde peticiones de usaurio a través de la vista.
+			1.1.4.1.- Parámetros pasados son gestionados por lanzador (bootstrap) que llama al controlador/método y en base a esto sabe el modelo y vista a la cual llamar
+	1.2.- Revisar Validación nginx
+		1.1.- URL: http://plantilla_mvc.net/controlador/metodo/argumentos
+			1.- $_SERVER['REQUEST_URI'] Retorna: /controlador/metodo/argumentos
+		1.2 Notas
+			1.- Mi pregunta: http://serverfault.com/questions/803423/nginx-php-7-get-params-homestead
+			2.- Using $_GET['_url'] as source of URIs: https://docs.phalconphp.com/uk/latest/reference/nginx.html
+			3.- reiniciar nginx - http://stackoverflow.com/questions/18587638/how-do-i-restart-nginx-only-after-the-config-test-was-successful-on-ubuntu
+	1.3.- Revisar correcta importación de archivos
+		1.3.1.- echo '<pre>'; print_r(get_required_files());
+		
+			
+
+
+
