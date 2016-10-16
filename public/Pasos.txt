@@ -5,6 +5,7 @@
 		1.1.3.- Vista: Renderizar los datos traídos desde el modelo, interactúa con el usuario, acá va colocado todo lo del formato de los datos, estilos, archivos java script
 		1.1.4.- Controlador: Se encarga del flujo de la aplicación, buscar un modelo, a través de este buscar los datos, y renderizarlos a través de la vista. También responde peticiones de usaurio a través de la vista.
 			1.1.4.1.- Parámetros pasados son gestionados por lanzador (bootstrap) que llama al controlador/método y en base a esto sabe el modelo y vista a la cual llamar
+			1.1.4.2.- "Request" recive peticiones por el URL y la pasa a "bootstrap" y este llama al "xxxxControler" que está dentro de carpeta "controllers" y este xxxxControler hace petición de modelo y vista
 	1.2.- Revisar Validación nginx
 		1.1.- URL: http://plantilla_mvc.net/controlador/metodo/argumentos
 			1.- $_SERVER['REQUEST_URI'] Retorna: /controlador/metodo/argumentos
@@ -15,7 +16,8 @@
 	1.3.- Revisar correcta importación de archivos
 		1.3.1.- echo '<pre>'; print_r(get_required_files());
 		
-			
+2.- 02 - PHP:POO+MVC - Crear un framework básico (request y bootstrap)	(https://www.youtube.com/watch?v=cQ0o-2aYT2Q&index=2&list=PLMVWdD5bcndrmfgQdYeZqTx-OP8SQilJK)
+	
 
 
 

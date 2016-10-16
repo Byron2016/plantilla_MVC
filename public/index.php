@@ -1,5 +1,7 @@
 <?php
 
+echo '<br>';
+echo 'usando SERVER ' . $_SERVER['REQUEST_URI'] . '<br>';
 
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) . DS);
@@ -14,7 +16,7 @@ require_once APP_PATH . 'Model.php';
 require_once APP_PATH . 'View.php';
 require_once APP_PATH . 'Registro.php';
 
-echo '<pre>'; print_r(get_required_files());
+//echo '<pre>'; print_r(get_required_files());
 
 
 
