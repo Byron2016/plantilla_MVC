@@ -13,7 +13,7 @@ class loginController extends Controller
     {
            
             Session::set('autenticado', true);
-            Session::set('level', 'usuario');
+            Session::set('level', 'admin');
             Session::set('var1', 'var1');
             Session::set('var2', 'var2');
 
@@ -73,8 +73,10 @@ vamos a nuevo post y debe salir acceso restringuido ya que está puesta especial
 
 7 Se coloca en nuevo acceso usuario y ya debe permitir.
 
-
-
+8 con acceso admin
+http://plantilla_mvc.net/login
+http://plantilla_mvc.net
+si permite agruegar
             */
     }
     
