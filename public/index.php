@@ -15,12 +15,9 @@ require_once APP_PATH . 'Registro.php';
 //echo '<pre>'; print_r(get_required_files());
 //echo "\n".'$_GET'."\n"; echo $_GET['url'];
 
-//prueba request
-$r = new Request();
-echo $r->getControlador() . '<br>';
-echo $r->getMetodo() . '<br>';
-echo '<pre>';print_r($r->getArgs()); //ponemos el pre para que salga en listado diferentes lineas.
-
+Bootstrap::run(new Request);
+//http://plantilla_mvc.net/ -- /home/vagrant/Proyectos/plantilla_MVC/public/controllers/indexController.php
+//http://plantilla_mvc.net/crt/met/arg -- /home/vagrant/Proyectos/plantilla_MVC/public/controllers/crtController.php
 
 
 exit();
