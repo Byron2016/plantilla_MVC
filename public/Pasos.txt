@@ -28,6 +28,10 @@
 		location ~ \.css {
                 add_header Content-Type text/css;
         }
-	
+4.- 04 - PHP:POO+MVC - Crear un framework básico (modelos y librerías)
+	1.1.- Bajar mysql workbrench: https://www.oracle.com/index.html (bgva2005@yahoo.com / )
+	1.2.- CREATE SCHEMA `mvc` DEFAULT CHARACTER SET utf8 ;
+	1.3.- 
+
 
 

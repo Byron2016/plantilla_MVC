@@ -10,3 +10,11 @@ define('DEFAULT_LAYOUT', 'layout1');
 define('APP_NAME', 'mi framework');
 define('APP_SLOGAN', 'mi primer fr php mvc');
 define('APP_COMPANY', 'dlancedu.com');
+
+//parametros para base de datos:
+    define('DB_HOST', '127.0.0.1');
+    define('DB_USER', 'homestead');
+    define('DB_PASS', 'secret');
+    define('DB_NAME', 'mvc');
+    define('DB_CHAR', 'utf8');
+    define('DB_PORT', '33060');
