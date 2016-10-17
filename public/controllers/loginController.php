@@ -23,7 +23,7 @@ class loginController extends Controller
 
 1
 
-http://plantilla_mvc.net/login/mostrar
+http://plantilla_mvc.net/login/
 
 despliega
 
@@ -31,6 +31,13 @@ level: usuario
 var1: var1
 var2: var2
 
+2 prueba destroy
+
+http://plantilla_mvc.net/login/cerrar
+
+level: 
+var1: 
+var2: 
 
 
 
