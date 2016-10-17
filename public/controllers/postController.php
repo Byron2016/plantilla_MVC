@@ -91,7 +91,19 @@ class postController extends Controller
         $this->_view->renderizar('editar', 'post');
     }
 
-
+    public function eliminar($id)
+    {
+        if(!$this->filtrarInt($id)){
+            $this->redireccionar('post');
+        }
+        
+        if(!$this->_post->getPost($this->filtrarInt($id))){
+            $this->redireccionar('post');
+        }
+        
+        $this->_post->eliminarPost($this->filtrarInt($id));
+        $this->redireccionar('post');
+    }
 }
 
 ?>

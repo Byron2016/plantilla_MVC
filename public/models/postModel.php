@@ -43,6 +43,11 @@ class postModel extends Model
                         ));
     }
 
+    public function eliminarPost($id)
+    {
+        $id = (int) $id;
+        $this->_db->query("DELETE FROM posts WHERE id = $id");
+    }
 
 }
 
