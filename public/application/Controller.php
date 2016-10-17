@@ -96,6 +96,12 @@ abstract class Controller
             return 0;
         }
     }
-    
+
+    protected function getPostParam($clave)
+    {
+        if(isset($_POST[$clave])){
+            return $_POST[$clave];
+        }
+    }    
 
 }

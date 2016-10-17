@@ -39,8 +39,8 @@ class postController extends Controller
             }
             echo 'a1';
             $this->_post->insertarPost(
-                    $this->getTexto('titulo'),
-                    $this->getTexto('cuerpo')
+                    $this->getPostParam('titulo'),
+                    $this->getPostParam('cuerpo')
                     );
             
             $this->redireccionar('post');
@@ -80,8 +80,8 @@ class postController extends Controller
             
             $this->_post->editarPost(
                     $this->filtrarInt($id),
-                    $this->getTexto('titulo'),
-                    $this->getTexto('cuerpo')
+                    $this->getPostParam('titulo'),
+                    $this->getPostParam('cuerpo')
                     );
             
             $this->redireccionar('post');
