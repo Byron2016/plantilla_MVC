@@ -65,6 +65,14 @@ level:
 var1: 
 var2: 
 
+6 autenticacion
+
+http://plantilla_mvc.net/login/
+http://plantilla_mvc.net --se tiene sesion iniciada
+vamos a nuevo post y debe salir acceso restringuido ya que está puesta especial.
+
+
+
             */
     }
     
