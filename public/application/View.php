@@ -12,18 +12,38 @@ class View
 
 	public function renderizar($vista, $item = false)
 	{
+		$menu = array(
+			array(
+				'id' => 'inicio',
+				'titulo' => 'Inicio',
+				'enlace' => BASE_URL
+			),
 
-		$rutaView = ROOT . 'views' . DS . $this->_controlador . DS . $vista . '.phtml';
+			array(
+				'id' => 'hola',
+				'titulo' => 'Hola',
+				'enlace' => BASE_URL . 'hola'
+			),
 
-		//echo BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/css/';
+			array(
+				'id' => 'post',
+				'titulo' => 'Post',
+				'enlace' => BASE_URL . 'post'
+			)
+		);
 
-		//exit;
+
+		
+
 
 		$_layoutParams = array(
 			'ruta_css' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/css/',
 			'ruta_img' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/img/',
-			'ruta_js' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/js/'
+			'ruta_js' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/js/',
+			'menu' => $menu
 		);
+
+		$rutaView = ROOT . 'views' . DS . $this->_controlador . DS . $vista . '.phtml';
 
 
 
