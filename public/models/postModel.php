@@ -13,6 +13,15 @@ class postModel extends Model
         return $post->fetchall();
     }
     
+    public function insertarPost($titulo, $cuerpo)
+    {
+        $this->_db->prepare("INSERT INTO posts VALUES (null, :titulo, :cuerpo)")
+                ->execute(
+                        array(
+                           ':titulo' => $titulo,
+                           ':cuerpo' => $cuerpo
+                        ));
+    }
 
 }
 
