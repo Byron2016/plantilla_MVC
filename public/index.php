@@ -1,8 +1,4 @@
 <?php
-
-echo '<br>';
-echo 'usando SERVER ' . $_SERVER['REQUEST_URI'] . '<br>';
-
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) . DS);
 define('APP_PATH', ROOT . 'application' . DS);
@@ -17,12 +13,19 @@ require_once APP_PATH . 'View.php';
 require_once APP_PATH . 'Registro.php';
 
 //echo '<pre>'; print_r(get_required_files());
+//echo "\n".'$_GET'."\n"; echo $_GET['url'];
+
+//prueba request
+$r = new Request();
+echo $r->getControlador() . '<br>';
+echo $r->getMetodo() . '<br>';
+echo '<pre>';print_r($r->getArgs()); //ponemos el pre para que salga en listado diferentes lineas.
 
 
 
 exit();
 echo '<br>';
-echo 'usando SERVER ' . $_SERVER['REQUEST_URI'] . '<br>';
+echo 'usando SERVER1 ' . $_SERVER['REQUEST_URI'] . '<br>';
 echo $_GET['url'];
 
 //phpinfo();
