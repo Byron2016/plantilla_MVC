@@ -57,6 +57,14 @@ level: usuario
 var1: 
 var2: var2
 
+5 prueba destroy
+
+http://plantilla_mvc.net/login/cerrar
+
+level: 
+var1: 
+var2: 
+
             */
     }
     
@@ -70,7 +78,7 @@ var2: var2
     
     public function cerrar()
     {
-        Session::destroy(array('var1'));
+        Session::destroy();
         $this->redireccionar('login/mostrar');
     }
 
