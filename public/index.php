@@ -16,6 +16,8 @@ require_once APP_PATH . 'Session.php';
 
 //echo '<pre>'; print_r(get_required_files());
 //echo "\n".'$_GET'."\n"; echo $_GET['url'];
+
+Session::init();
 try {
 	Bootstrap::run(new Request);
 
