@@ -18,6 +18,23 @@ class loginController extends Controller
             Session::set('var2', 'var2');
 
             $this->redireccionar('login/mostrar');
+
+            /*
+
+1
+
+http://plantilla_mvc.net/login/mostrar
+
+despliega
+
+level: usuario
+var1: var1
+var2: var2
+
+
+
+
+            */
     }
     
 
