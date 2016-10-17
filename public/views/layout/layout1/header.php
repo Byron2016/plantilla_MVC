@@ -13,7 +13,7 @@
         <link href="<?php echo $_layoutParams['ruta_css']; ?>estilos.css" rel="stylesheet" type="text/css" />
         <script src="<?php echo BASE_URL; ?>public/js/jquery.js" type="text/javascript"></script>
         <script src="<?php echo BASE_URL; ?>public/js/jquery.validate.js" type="text/javascript"></script>
-        
+        <!-- Para aumentar los js personalidos -->
         <?php if(isset($_layoutParams['js']) && count($_layoutParams['js'])): ?>
             <?php for($i=0; $i < count($_layoutParams['js']); $i++): ?>
                 <script src="<?php echo $_layoutParams['js'][$i] ?>" type="text/javascript"></script>

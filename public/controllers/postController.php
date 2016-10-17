@@ -21,6 +21,7 @@ class postController extends Controller
         
         $this->_view->titulo = 'Nuevo Post';
         //$this->view->prueba = $this->getTexto('titulo');
+        $this->_view->setJs(array('nuevo'));
         
         if($this->getInt('guardar') == 1){
             $this->_view->datos = $_POST; //para que se quede lleno. No deberia hacerse así sino hacer funcion que retorne parámetros post.
