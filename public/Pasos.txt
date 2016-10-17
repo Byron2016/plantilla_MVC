@@ -24,6 +24,10 @@
 		
 2.- 02 - PHP:POO+MVC - Crear un framework básico (request y bootstrap)	(https://www.youtube.com/watch?v=cQ0o-2aYT2Q&index=2&list=PLMVWdD5bcndrmfgQdYeZqTx-OP8SQilJK)
 3.- 03 - PHP:POO+MVC - Crear un framework básico (vistas y layout)
-
+	1.- Para que llame al css: (https://support.qualityunit.com/081573-Installation-with-NGINX-rewrite-rules)
+		location ~ \.css {
+                add_header Content-Type text/css;
+        }
+	
 
 
