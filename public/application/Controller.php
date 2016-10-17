@@ -29,4 +29,20 @@ abstract class Controller
         
         }
     }
+
+    protected function getLibrary($libreria,$dirInterno)
+    {
+        $rutaLibreria = ROOT . 'libs' . DS . $dirInterno . DS . $libreria . '.php';
+        
+        if (is_readable($rutaLibreria))
+        {
+            require_once $rutaLibreria;
+            
+        }
+        else 
+        {
+            throw new Exception('Error en Controler getLibrary: Error de libreria');
+                }
+        
+    }
 }
