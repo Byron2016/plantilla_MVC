@@ -3,13 +3,12 @@
 class indexController extends Controller
 {
 	public function __construct(){
-		//parent::__construct();
-		
+		parent::__construct();
 	}
 
 	public function index()
 	{
-		echo 'hola desde index controler ';
+		$this->_view->renderizar('index');
 	}
 
 }
