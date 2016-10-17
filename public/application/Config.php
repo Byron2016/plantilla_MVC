@@ -12,7 +12,7 @@ define('APP_SLOGAN', 'mi primer fr php mvc');
 define('APP_COMPANY', 'dlancedu.com');
 
 //parametros para base de datos:
-    define('DB_HOST', '127.0.0.1');
+    define('DB_HOST', 'localhost');
     define('DB_USER', 'homestead');
     define('DB_PASS', 'secret');
     define('DB_NAME', 'mvc');

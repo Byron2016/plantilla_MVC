@@ -7,7 +7,7 @@ class postModel extends Model
     }
     
     
-    public function getPostsPrueba()
+    public function getPosts()
     {
         $post = array(
             'id' => 1,

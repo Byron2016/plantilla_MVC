@@ -18,6 +18,7 @@ abstract class Controller
         //echo $rutaModelo;
         if (is_readable($rutaModelo))
         {
+            //echo 'si es legible';
             require_once $rutaModelo;
             $modelo = new $modelo;
             return $modelo;
