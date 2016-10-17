@@ -84,6 +84,18 @@ abstract class Controller
         }
     }
 
+    protected function filtrarInt($int)
+    {
+        //valida el int quero llega por url.
+        $int = (int) $int;
+        
+        if(is_int($int)){
+            return $int;
+        }
+        else{
+            return 0;
+        }
+    }
     
 
 }
