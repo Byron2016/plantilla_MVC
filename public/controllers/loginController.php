@@ -39,6 +39,15 @@ level:
 var1: 
 var2: 
 
+3 destroy enviando 2 variables como arreglo
+
+http://plantilla_mvc.net/login/
+http://plantilla_mvc.net/login/cerrar
+
+level: usuario
+var1: 
+var2:
+
 
 
             */
@@ -54,7 +63,7 @@ var2:
     
     public function cerrar()
     {
-        Session::destroy();
+        Session::destroy(array('var1','var2'));
         $this->redireccionar('login/mostrar');
     }
 
