@@ -10,7 +10,7 @@ class DataBase extends  PDO
                 $var = 'mysql:host=' . DB_HOST . 
                 ';dbname=' . DB_NAME.
                 ';port=' . DB_PORT.','.DB_USER.','. DB_PASS;
-                echo $var;
+                //echo $var;
         parent::__construct(
                 'mysql:host=' . DB_HOST . 
                 ';dbname=' . DB_NAME.
