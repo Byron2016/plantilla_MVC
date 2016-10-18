@@ -6,6 +6,7 @@ define('APP_PATH', ROOT . 'application' . DS);
 
 //echo md5('1234'); exit;
 //81dc9bdb52d04dc20036dbd8313ed055
+echo uniqid();exit;
 
 //cracqueo md5
 /*
