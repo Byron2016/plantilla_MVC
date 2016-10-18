@@ -13,7 +13,7 @@ class loginController extends Controller
     {
            
             Session::set('autenticado', true);
-            Session::set('level', 'especial');
+            Session::set('level', 'admin');
             Session::set('var1', 'var1');
             Session::set('var2', 'var2');
 
@@ -27,11 +27,19 @@ http://plantilla_mvc.net/login/
 
 despliega
 
-level: usuario
+level: especial
 var1: var1
 var2: var2
 
+al agregar post indica acceso restringuido
 
+2
+
+level: admin
+var1: var1
+var2: var2
+
+en post deja ingresar
 
 
 
