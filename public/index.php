@@ -7,6 +7,18 @@ define('APP_PATH', ROOT . 'application' . DS);
 //echo md5('1234'); exit;
 //81dc9bdb52d04dc20036dbd8313ed055
 
+//cracqueo md5
+/*
+generar md5 en pagina: http://md5.gromweb.com/
+se ingresa el md5 a reverar: 81dc9bdb52d04dc20036dbd8313ed055
+devuelve 1234
+*/
+
+
+
+
+
+
 try {
 
 require_once APP_PATH . 'Config.php';
