@@ -34,6 +34,20 @@ class View
 			)
 		);
 
+		if(Session::get('autenticado')){
+			$menu[] = array(
+				'id' => 'login',
+				'titulo' => 'Cerrar Sesion',
+				'enlace' => BASE_URL . 'login/cerrar'
+			);
+		} else {
+			$menu[] = array(
+				'id' => 'login',
+				'titulo' => 'Iniciar Sesion',
+				'enlace' => BASE_URL . 'login'
+			);
+		}
+
 
 		$js = array();
         

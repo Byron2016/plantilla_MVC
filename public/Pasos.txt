@@ -66,3 +66,18 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_spanish_ci;
 
+INSERT INTO `mvc`.`usuarios` (`id`,`nombre`,`usuario`,`pass`,`email`,`role`,`estado`)
+VALUES (null,'nombre1','admin','81dc9bdb52d04dc20036dbd8313ed055','admin@amin.com','admin',1);
+
+81dc9bdb52d04dc20036dbd8313ed055
+
+SELECT `usuarios`.`id`,
+    `usuarios`.`nombre`,
+    `usuarios`.`usuario`,
+    `usuarios`.`pass`,
+    `usuarios`.`email`,
+    `usuarios`.`role`,
+    `usuarios`.`estado`
+FROM `mvc`.`usuarios`;
+
+
