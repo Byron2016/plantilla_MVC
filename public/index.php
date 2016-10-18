@@ -3,7 +3,8 @@ define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) . DS);
 define('APP_PATH', ROOT . 'application' . DS);
 
-
+try {
+	
 require_once APP_PATH . 'Config.php';
 require_once APP_PATH . 'Request.php';
 require_once APP_PATH . 'Bootstrap.php';
@@ -18,7 +19,7 @@ require_once APP_PATH . 'Session.php';
 //echo "\n".'$_GET'."\n"; echo $_GET['url'];
 
 Session::init();
-try {
+
 	Bootstrap::run(new Request);
 
 } catch(Exception $e) {
