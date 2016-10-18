@@ -41,6 +41,15 @@ var2: var2
 
 en post deja ingresar
 
+2.1
+
+level: admin
+var1: var1
+var2: var2
+
+en post NO deja ingresar ya que pusimos true.
+
+
 
 
 

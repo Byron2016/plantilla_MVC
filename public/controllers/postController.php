@@ -18,7 +18,7 @@ class postController extends Controller
     
     public function nuevo()
     {
-        Session::accesoEstricto(array('usuario'));
+        Session::accesoEstricto(array('usuario'),true);
         $this->_view->titulo = 'Nuevo Post';
         //$this->view->prueba = $this->getTexto('titulo');
         $this->_view->setJs(array('nuevo'));
