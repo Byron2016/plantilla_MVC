@@ -64,7 +64,7 @@ class Session
         if(!Session::get('autenticado')){
             return FALSE;
         }
-        Session::tiempo();
+        //Session::tiempo();
         if(Session::getLevel($level) > Session::getLevel(Session::get('level'))){
             return FALSE;
         }

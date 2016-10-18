@@ -77,6 +77,13 @@ vamos a nuevo post y debe salir acceso restringuido ya que está puesta especial
 http://plantilla_mvc.net/login
 http://plantilla_mvc.net
 si permite agruegar
+
+9 a la vista si muestra ya que estamos como adm y minimo es especial
+
+
+
+
+
             */
     }
     

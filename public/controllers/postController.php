@@ -93,6 +93,8 @@ class postController extends Controller
 
     public function eliminar($id)
     {
+        Session::acceso('admin');
+        
         if(!$this->filtrarInt($id)){
             $this->redireccionar('post');
         }
