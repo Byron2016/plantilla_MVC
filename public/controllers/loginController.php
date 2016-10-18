@@ -14,6 +14,7 @@ class loginController extends Controller
            
             Session::set('autenticado', true);
             Session::set('level', 'usuario');
+            Session::set('tiempo', time()); //para saber que usuario inicio sesion
             Session::set('var1', 'var1');
             Session::set('var2', 'var2');
 
@@ -27,34 +28,14 @@ http://plantilla_mvc.net/login/
 
 despliega
 
-level: especial
-var1: var1
-var2: var2
-
-al agregar post indica acceso restringuido
-
-2
-
-level: admin
-var1: var1
-var2: var2
-
-en post deja ingresar
-
-2.1
-
-level: admin
-var1: var1
-var2: var2
-
-en post NO deja ingresar ya que pusimos true.
-
-3
 level: usuario
+tiempo: 1476829411
 var1: var1
 var2: var2
 
-en post  deja ingresar ya que pusimos true. Aun cuando acceso tenga un nivel mayor, este estricto permite pasar.
+al ir a aumentar sale: http://plantilla_mvc.net/error/access/8080
+
+Timepo se sesion agotado.
 
 
 
@@ -68,6 +49,7 @@ en post  deja ingresar ya que pusimos true. Aun cuando acceso tenga un nivel may
     public function mostrar()
     {
             echo 'level: ' . Session::get('level').'<br>';
+            echo 'tiempo: ' . Session::get('tiempo').'<br>';
             echo 'var1: ' . Session::get('var1').'<br>';
             echo 'var2: ' . Session::get('var2').'<br>'; 
     }

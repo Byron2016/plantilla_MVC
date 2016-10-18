@@ -18,3 +18,6 @@ define('APP_COMPANY', 'dlancedu.com');
     define('DB_NAME', 'mvc');
     define('DB_CHAR', 'utf8');
     define('DB_PORT', '33060');
+
+//sesiones
+define('SESSION_TIME', 1);
