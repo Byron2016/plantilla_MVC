@@ -20,4 +20,4 @@ define('APP_COMPANY', 'dlancedu.com');
     define('DB_PORT', '33060');
 
 //sesiones
-define('SESSION_TIME', 1);
+define('SESSION_TIME', 10);
