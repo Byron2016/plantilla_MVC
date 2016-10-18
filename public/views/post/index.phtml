@@ -23,7 +23,7 @@
 
 <?php endif; ?>
 
-<?php if(Session::accesoView('especial')): ?>
-<?php //if(Session::accesoView('especial'): ?>
+<?php if(Session::accesoViewEstricto(array('usuario'))): ?>
+
     <p><a href="<?php BASE_URL; ?>post/nuevo">Agregar Post</a></p>
 <?php endif; ?>

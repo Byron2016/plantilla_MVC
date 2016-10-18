@@ -13,7 +13,7 @@ class loginController extends Controller
     {
            
             Session::set('autenticado', true);
-            Session::set('level', 'admin');
+            Session::set('level', 'usuario');
             Session::set('var1', 'var1');
             Session::set('var2', 'var2');
 
@@ -48,6 +48,13 @@ var1: var1
 var2: var2
 
 en post NO deja ingresar ya que pusimos true.
+
+3
+level: usuario
+var1: var1
+var2: var2
+
+en post  deja ingresar ya que pusimos true. Aun cuando acceso tenga un nivel mayor, este estricto permite pasar.
 
 
 
