@@ -13,7 +13,7 @@ class loginController extends Controller
     {
            
             Session::set('autenticado', true);
-            Session::set('level', 'admin');
+            Session::set('level', 'especial');
             Session::set('var1', 'var1');
             Session::set('var2', 'var2');
 
@@ -31,54 +31,7 @@ level: usuario
 var1: var1
 var2: var2
 
-2 prueba destroy
 
-http://plantilla_mvc.net/login/cerrar
-
-level: 
-var1: 
-var2: 
-
-3 destroy enviando 2 variables como arreglo
-
-http://plantilla_mvc.net/login/
-http://plantilla_mvc.net/login/cerrar
-
-level: usuario
-var1: 
-var2:
-
-4 destroy enviando 1 variables como arreglo
-
-http://plantilla_mvc.net/login/
-http://plantilla_mvc.net/login/cerrar
-
-level: usuario
-var1: 
-var2: var2
-
-5 prueba destroy
-
-http://plantilla_mvc.net/login/cerrar
-
-level: 
-var1: 
-var2: 
-
-6 autenticacion
-
-http://plantilla_mvc.net/login/
-http://plantilla_mvc.net --se tiene sesion iniciada
-vamos a nuevo post y debe salir acceso restringuido ya que está puesta especial.
-
-7 Se coloca en nuevo acceso usuario y ya debe permitir.
-
-8 con acceso admin
-http://plantilla_mvc.net/login
-http://plantilla_mvc.net
-si permite agruegar
-
-9 a la vista si muestra ya que estamos como adm y minimo es especial
 
 
 
