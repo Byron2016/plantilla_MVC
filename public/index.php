@@ -3,8 +3,11 @@ define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) . DS);
 define('APP_PATH', ROOT . 'application' . DS);
 
+echo md5('1234'); exit;
+//81dc9bdb52d04dc20036dbd8313ed055
+
 try {
-	
+
 require_once APP_PATH . 'Config.php';
 require_once APP_PATH . 'Request.php';
 require_once APP_PATH . 'Bootstrap.php';

@@ -50,6 +50,19 @@ COLLATE = utf8_spanish_ci;
 
 INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 1','cuerpo 1');
 INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 2','cuerpo 2');
+SELECT `posts`.`id`, `posts`.`titulo`,`posts`.`cuerpo` FROM `mvc`.`posts`;
 
 
+CREATE TABLE `mvc`.`usuarios` (
+  `id` INT(4) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(100)  NOT NULL,
+  `usuario` VARCHAR(30)  NOT NULL,
+  `pass` VARCHAR(40) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `role` enum('admin','especial','usuario') ,
+  `estado` tinyint,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
