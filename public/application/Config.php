@@ -21,3 +21,6 @@ define('APP_COMPANY', 'dlancedu.com');
 
 //sesiones
 define('SESSION_TIME', 10);
+
+//hash key
+define('HASH_KEY', '5806aed8e2552');

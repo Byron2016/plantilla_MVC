@@ -6,7 +6,7 @@ define('APP_PATH', ROOT . 'application' . DS);
 
 //echo md5('1234'); exit;
 //81dc9bdb52d04dc20036dbd8313ed055
-echo uniqid();exit;
+//echo uniqid();exit; //5806aed8e2552
 
 //cracqueo md5
 /*
@@ -31,6 +31,9 @@ require_once APP_PATH . 'View.php';
 require_once APP_PATH . 'Registro.php';
 require_once APP_PATH . 'DataBase.php';
 require_once APP_PATH . 'Session.php';
+require_once APP_PATH . 'Hash.php';
+
+echo Hash::getHash('md5','1234', HASH_KEY); exit; //testearlo con md5 reverse para ver si devuelve 1234.
 
 //echo '<pre>'; print_r(get_required_files());
 //echo "\n".'$_GET'."\n"; echo $_GET['url'];
