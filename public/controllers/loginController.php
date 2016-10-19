@@ -12,6 +12,11 @@ class loginController extends Controller
 
     public function index()
     {
+        if (Session::get('autenticado')) 
+        {
+            //evita que usaurio vuelva a ingresar a pantalla de login
+            $this->redireccionar();
+        }
 
         $this->_view->titulo = 'Iniciar Sesion';
         
