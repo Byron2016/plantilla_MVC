@@ -71,6 +71,10 @@ VALUES (null,'nombre1','admin','81dc9bdb52d04dc20036dbd8313ed055','admin@amin.co
 
 81dc9bdb52d04dc20036dbd8313ed055
 
+f554564b63bfebedb20dab6c1e81132a44580761
+
+update `mvc`.`usuarios` set pass='f554564b63bfebedb20dab6c1e81132a44580761' where id=1
+alter table `mvc`.`usuarios` add fecha DATETIME not null;
 SELECT `usuarios`.`id`,
     `usuarios`.`nombre`,
     `usuarios`.`usuario`,
@@ -79,5 +83,7 @@ SELECT `usuarios`.`id`,
     `usuarios`.`role`,
     `usuarios`.`estado`
 FROM `mvc`.`usuarios`;
+
+
 
 
