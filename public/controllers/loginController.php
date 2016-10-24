@@ -18,6 +18,8 @@ class loginController extends Controller
             $this->redireccionar();
         }
 
+        //echo "<script>alert('There are no fields to generate a report');</script>";
+        //echo '1ccccccccccccccccccccccccccccccccccccccccccc';
         $this->_view->titulo = 'Iniciar Sesion';
         
         if($this->getInt('enviar') == 1){

@@ -28,6 +28,9 @@
 		location ~ \.css {
                 add_header Content-Type text/css;
         }
+		location ~ \.js {
+                add_header Content-Type text/javascript;
+        }
 4.- 04 - PHP:POO+MVC - Crear un framework básico (modelos y librerías)
 	1.1.- Bajar mysql workbrench: https://www.oracle.com/index.html (bgva2005@yahoo.com / )
 	1.2.- CREATE SCHEMA `mvc` DEFAULT CHARACTER SET utf8 ;
@@ -37,6 +40,8 @@
 11.- Envío de correos
 	Descargar PHPMailer v5.1 (http://phpmailer.worxware.com/)  (https://github.com/PHPMailer/PHPMailer)
 	
+12 Paginacion
+	Bajar librería Crear un Paginador 2 (http://www.dlancedu.com/php.html)
 	
 	
 CREATE TABLE `mvc`.`posts` (
@@ -75,7 +80,13 @@ VALUES (null,'nombre1','admin','81dc9bdb52d04dc20036dbd8313ed055','admin@amin.co
 f554564b63bfebedb20dab6c1e81132a44580761
 
 update `mvc`.`usuarios` set pass='f554564b63bfebedb20dab6c1e81132a44580761' where id=1
+
 alter table `mvc`.`usuarios` add fecha DATETIME not null;
+ALTER TABLE `mvc`.`usuarios` 
+ADD COLUMN `codigo` INT(10) UNSIGNED NULL AFTER `fecha`,
+ADD UNIQUE INDEX `codigo_UNIQUE` (`codigo` ASC);
+
+
 SELECT `usuarios`.`id`,
     `usuarios`.`nombre`,
     `usuarios`.`usuario`,
@@ -85,6 +96,23 @@ SELECT `usuarios`.`id`,
     `usuarios`.`estado`
 FROM `mvc`.`usuarios`;
 
+
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 11','cuerpo 1');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 12','cuerpo 2');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 1','cuerpo 1');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 2','cuerpo 2');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 1','cuerpo 1');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 2','cuerpo 2');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 1','cuerpo 1');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 2','cuerpo 2');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 1','cuerpo 1');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 2','cuerpo 2');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 1','cuerpo 1');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 2','cuerpo 2');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 1','cuerpo 1');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 2','cuerpo 2');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 1','cuerpo 1');
+INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 2','cuerpo 2');
 
 
 

@@ -12,7 +12,7 @@ class postController extends Controller
     public function index()
     {
 
-        Session::accesoEstricto(array('usuario'),true);
+        Session::accesoEstricto(array('usuario'),false);
         $this->_view->posts = $this->_post->getPosts();
         $this->_view->titulo = 'Post';
         $this->_view->renderizar('index', 'post');

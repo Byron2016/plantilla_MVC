@@ -10,6 +10,8 @@ class Bootstrap
 		$metodo =  $peticion->getMetodo();
 		$args = $peticion->getArgs();
 
+		//echo $controller.'/'.$metodo;
+
 		if(is_readable($rutaControlador)){
 			//vverificar si archivo existe y es legible
 			require_once $rutaControlador;

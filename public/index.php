@@ -38,7 +38,8 @@ require_once APP_PATH . 'Hash.php';
 
 //echo '<pre>'; print_r(get_required_files());
 //echo "\n".'$_GET'."\n"; echo $_GET['url'];
-
+//echo "\n".'$_GET'."\n"; var_dump($_GET);
+//exit;
 Session::init();
 
 	Bootstrap::run(new Request);
