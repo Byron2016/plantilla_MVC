@@ -9,11 +9,28 @@ class postController extends Controller
         $this->_post = $this->loadModel('post');
     }
     
-    public function index()
+    public function index($pagina = false)
     {
+        /*
+        for($i =0; $i <300; $i++){
+            $model = $this->loadModel('post');
+            $model->insertarPost('titlo ' . $i, 'cueropo'.$i) ;
+        }
+        */
+
 
         Session::accesoEstricto(array('usuario'),false);
-        $this->_view->posts = $this->_post->getPosts();
+
+        if(!$this->filtrarInt($pagina)){
+            $pagina = false;
+        }else {
+            $pagina = (int) $pagina;
+        }
+        $this->getLibrary('paginador','paginador');
+        $paginador = new Paginador();
+
+        $this->_view->posts = $paginador->paginar($this->_post->getPosts(),$pagina);
+        $this->_view->paginacion = $paginador->getView('prueba','post/index');
         $this->_view->titulo = 'Post';
         $this->_view->renderizar('index', 'post');
     }
@@ -107,6 +124,29 @@ class postController extends Controller
         
         $this->_post->eliminarPost($this->filtrarInt($id));
         $this->redireccionar('post');
+    }
+
+    public function prueba($pagina = false)
+    {
+        /*
+        for($i =0; $i <300; $i++){
+            $model = $this->loadModel('post');
+            $model->insertarPrueba('nombre ' . $i) ;
+        }
+        */
+
+        if(!$this->filtrarInt($pagina)){
+            $pagina = false;
+        }else {
+            $pagina = (int) $pagina;
+        }
+        $this->getLibrary('paginador','paginador');
+        $paginador = new Paginador();
+
+        $this->_view->posts = $paginador->paginar($this->_post->getPrueba(),$pagina);
+        $this->_view->paginacion = $paginador->getView('prueba','post/prueba');
+        $this->_view->titulo = 'Post';
+        $this->_view->renderizar('prueba', 'post');
     }
 }
 

@@ -1,9 +1,6 @@
 <?php
 
-/**
-* 
-*/
-class paginador 
+class Paginador 
 {
 	private $_datos; //registros devueltos
 	private $_paginacion; //datos de la paginacion
@@ -13,12 +10,11 @@ class paginador
 		$this->_datos = array();
 		$this->_paginacion = array();
 		$this->_db = new Database();
-		//echo 'fin pag';
 	}
 
-	public function paginar($query, $pagina = false, $limite = false)
+	public function paginar($query, $pagina = false, $limite = false, $paginacion = false)
 	{
-		echo 'valor de pagina: ' . $pagina;
+		//echo 'valor de pagina: ' . $pagina;
 		if($limite && is_numeric($limite))
 		{
 			$limite = $limite;
@@ -28,57 +24,19 @@ class paginador
 
 		if($pagina && is_numeric($pagina))
 		{
-			//echo 'esta en pagina asignacion';
 			$pagina = $pagina;
 			$inicio = ($pagina -1) * $limite;
 		} else {
-			echo 'esta en pagina asignacion else';
 			$pagina = 1;
 			$inicio = 0;
 		}
 
-		//$consulta = mysql_query($query, Db::Connect());
-		echo $query.'<br>';
-		$post = $this->_db->query($query)->fetchAll();
+		$registros = count($query);
 
-		//$consulta = $this->_db->query($query);
-		//$registros = mysql_num_rows($consulta);
-		$registros = Count($post);
-		//echo $registros;
+
 		$total = ceil($registros / $limite);
-		$query = $query . ' LIMIT ' . $inicio . ','.  $limite;
-		echo ' 2: ' . $query.'<br>';
-		//echo ' valores: ' . $limite .' ' . $inicio;
-		//$consulta = mysql_query($query, Db::Connect());
+		$this->_datos = array_slice($query, $inicio, $limite);
 
-		$consulta = $this->_db->query($query);
-		/*
-
-		while($regs = mysql_fetch_assocc($consulta)){
-			$this->_datos[] = $regs;
-		}
-
-$stmt = $db->query(...);
-while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-
-
-		*/
-
-		if(!$consulta)
-		{
-  				die("Execute query error, because: ". print_r($this->_db->errorInfo()) );
-		}
-		//success case
-		else{
-     		//continue flow
-     		while($regs = $consulta->fetchAll()){
-					$this->_datos[] = $regs;
-			}
-		}
-
-		//echo 'aaa';
-
-		
 
 		$paginacion = array();
 		$paginacion['actual'] = $pagina;
@@ -101,12 +59,13 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 		}		
 
 		$this->_paginacion = $paginacion;
+		$this->_RangoPaginacion($paginacion);
 
 		return $this->_datos;
 
 	}
 
-	public function getRangoPaginacion($limite = false)
+	private function _RangoPaginacion($limite = false)
 	{
 		if($limite && is_numeric($limite))
 		{
@@ -130,8 +89,6 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 		}
 
 		$rango_izquierdo = $pagina_seleccionada	- ($rango + $resto);
-
-		//echo 'rango_derecho: '. $rango_derecho . ' rango ' . $rango . ' total_paginas ' . $total_paginas . ' pagina_seleccionada ' . $pagina_seleccionada . ' resto ' . $resto . ' rango_izquierdo ' . $rango_izquierdo;
 
 		for ($i = $pagina_seleccionada; $i > $rango_izquierdo; $i--) { 
 			if ($i == 0) {
@@ -162,18 +119,24 @@ while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
 	}
 
-	public function getPaginacion()
+	//crear vista solo para paginacion
+	//para usar misma vista en varias paginaciones
+	public function getView($vista, $link = false)
 	{
-		echo 'entro';
-		if($this->_paginacion){
-			echo 'en ';
-			return $this->_paginacion;
-		} else {
-			//echo 'en false';
-			return false;
+		$rutaView = ROOT . 'views' . DS . '_paginador' . DS . $vista . '.php';
+
+		if($link)
+			$link = BASE_URL . $link . '/';
+
+		if(is_readable($rutaView)) 
+		{
+			ob_start(); //apertura el buffer
+			include $rutaView;
+			$contenido = ob_get_contents();
+			ob_end_clean(); //limpia el buffer que acabamos de extraer
+			return $contenido;
 		}
-		
+
+		throw new Exception('Paginador.php, getView Error de paginacion');
 	}
-
-
 }

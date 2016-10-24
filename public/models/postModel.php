@@ -49,7 +49,19 @@ class postModel extends Model
         $id = (int) $id;
         $this->_db->query("DELETE FROM posts WHERE id = $id");
     }
+    public function insertarPrueba($nombre)
+    {
+        $this->_db->prepare("INSERT INTO prueba VALUES (null, :nombre)")
+                ->execute(
+                        array(
+                           ':nombre' => $nombre
+                        ));
+    }
 
-}
+    public function getPrueba()
+    {
+        $post = $this->_db->query("select * from prueba ");
+        return $post->fetchAll();
+    }}
 
 ?>
