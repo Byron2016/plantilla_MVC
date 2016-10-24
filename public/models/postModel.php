@@ -17,7 +17,7 @@ class postModel extends Model
     {
         $id = (int) $id;
         $post = $this->_db->query("select * from posts where id = $id");
-        $post = $this->_db->que
+        //$post = $this->_db->que
         return $post->fetch();
     }
 
