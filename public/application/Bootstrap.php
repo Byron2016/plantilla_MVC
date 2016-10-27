@@ -11,6 +11,9 @@ class Bootstrap
 		$args = $peticion->getArgs();
 
 		//echo $controller.'/'.$metodo;
+		//echo " la rutacontrolador es: ". $rutaControlador . "<br>";
+		//echo " la controller es: ". $controller . "<br>";
+		//echo " la metodo es: ". $metodo . "<br>";
 
 		if(is_readable($rutaControlador)){
 			//vverificar si archivo existe y es legible
@@ -30,7 +33,7 @@ class Bootstrap
 				call_user_func(array($controller, $metodo));
 			}
 		} else {
-			throw new Exception('Error en Bootstrap: No encontrado');
+			throw new Exception('Error en Bootstrap1: No encontrado');
 		}
 
 	}

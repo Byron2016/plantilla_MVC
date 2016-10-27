@@ -116,5 +116,31 @@ INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 2','cu
 INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 1','cuerpo 1');
 INSERT INTO `mvc`.`posts` (`id`, `titulo`, `cuerpo`) VALUES (null,'titulo 2','cuerpo 2');
 
+CREATE TABLE `mvc`.`paises` (
+  `id` INT unsigned NOT NULL AUTO_INCREMENT,
+  `pais` VARCHAR(100)  NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
+CREATE TABLE `mvc`.`ciudades` (
+  `id` INT unsigned NOT NULL AUTO_INCREMENT,
+  `ciudad` VARCHAR(100)  NOT NULL,
+  `pais` INT  NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8
+COLLATE = utf8_spanish_ci;
 
+INSERT INTO `mvc`.`paises` (`id`, `pais`) VALUES (null, 'pais 1');
+INSERT INTO `mvc`.`paises` (`id`, `pais`) VALUES (null, 'pais 2');
+INSERT INTO `mvc`.`paises` (`id`, `pais`) VALUES (null, 'pais 3');
+INSERT INTO `mvc`.`paises` (`id`, `pais`) VALUES (null, 'pais 4');
+
+INSERT INTO `mvc`.`ciudades` (`id`, `ciudad`, `pais`) VALUES (null, 'ciudad 1',1);
+INSERT INTO `mvc`.`ciudades` (`id`, `ciudad`, `pais`) VALUES (null, 'ciudad 2',1);
+INSERT INTO `mvc`.`ciudades` (`id`, `ciudad`, `pais`) VALUES (null, 'ciudad 3',1);
+
+select * from `mvc`.`paises`;
+select * from `mvc`.`ciudades`;
