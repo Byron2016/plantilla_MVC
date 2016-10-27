@@ -10,16 +10,28 @@ class errorController extends Controller
 
 	public function index()
 	{
-            $this->_view->titulo = 'Error';
-            $this->_view->mensaje = $this->_getError();
+            
+            if(USAR_SMARTY == '1'){
+                $this->_view->assign('titulo','Error');
+                $this->_view->assign('mensaje',$this->_getError());
+            } else {
+                $this->_view->titulo = 'Error';
+                $this->_view->mensaje = $this->_getError();
+            }
             $this->_view->renderizar('index');
 
 	}
         
     public function access($codigo)
     {
-        $this->_view->titulo = 'Error';
-        $this->_view->mensaje = $this->_getError($codigo);
+
+            if(USAR_SMARTY == '1'){
+                $this->_view->assign('titulo','Error');
+                $this->_view->assign('mensaje',$this->_getError($codigo));
+            } else {
+                $this->_view->titulo = 'Error';
+                $this->_view->mensaje = $this->_getError($codigo);
+            }
         $this->_view->renderizar('access');
     }
 

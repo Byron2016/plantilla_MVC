@@ -20,19 +20,38 @@ class loginController extends Controller
 
         //echo "<script>alert('There are no fields to generate a report');</script>";
         //echo '1ccccccccccccccccccccccccccccccccccccccccccc';
-        $this->_view->titulo = 'Iniciar Sesion';
+        //$this->_view->titulo = 'Iniciar Sesion';
         
+            if(USAR_SMARTY == '1'){
+                $this->_view->assign('titulo', 'Iniciar Sesion');
+            } else {
+                $this->_view->titulo ='Iniciar Sesion';
+            }
+            
         if($this->getInt('enviar') == 1){
-            $this->_view->datos = $_POST; //para q se mantenga el nombre d usuario
+            if(USAR_SMARTY == '1'){
+                $this->_view->assign('datos', $_POST);
+            } else {
+                $this->_view->datos = $_POST; //para q se mantenga el nombre d usuario
+            }
 
             if(!$this->getAlphaNum('usuario')){
-                $this->_view->_error = 'Debe introducir su nombre de usuario';
+                
+                if(USAR_SMARTY == '1'){
+                    $this->_view->assign('_error', 'Debe introducir su nombre de usuario');
+                } else {
+                    $this->_view->_error = 'Debe introducir su nombre de usuario';
+                }
                 $this->_view->renderizar('index','login');
                 exit;
             }
             
             if(!$this->getSql('pass')){
-                $this->_view->_error = 'Debe introducir su password';
+                if(USAR_SMARTY == '1'){
+                    $this->_view->assign('_error', 'Debe introducir su password');
+                } else {
+                    $this->_view->_error = 'Debe introducir su password';
+                }
                 $this->_view->renderizar('index','login');
                 exit;
             }
@@ -43,13 +62,21 @@ class loginController extends Controller
                     );
             
             if(!$row){
-                $this->_view->_error = 'Usuario y/o password incorrectos';
+                if(USAR_SMARTY == '1'){
+                    $this->_view->assign('_error', 'Usuario y/o password incorrectos');
+                } else {
+                    $this->_view->_error = 'Usuario y/o password incorrectos';
+                }
                 $this->_view->renderizar('index','login');
                 exit;
             }
             
             if($row['estado'] != 1){
-                $this->_view->_error = 'Este usuario no esta habilitado';
+                if(USAR_SMARTY == '1'){
+                    $this->_view->assign('_error', 'Este usuario no esta habilitado');
+                } else {
+                    $this->_view->_error = 'Este usuario no esta habilitado';
+                }
                 $this->_view->renderizar('index','login');
                 exit;
             }

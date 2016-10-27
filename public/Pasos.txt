@@ -1,4 +1,6 @@
-1.- 01 - PHP:POO+MVC - Crear un framework básico  (estructura básica y patrón MVC) (https://www.youtube.com/watch?v=BO2lzbSNvy0&list=PLMVWdD5bcndrmfgQdYeZqTx-OP8SQilJK)
+https://www.youtube.com/watch?v=BO2lzbSNvy0&list=PLMVWdD5bcndrmfgQdYeZqTx-OP8SQilJK
+
+1.- 01 - PHP:POO+MVC - Crear un framework básico  (estructura básica y patrón MVC) ()
 	1.1.- MVC
 		1.1.1.- Explicación: Separar código en tres partes modelo, vista y controlador
 		1.1.2.- Modelo: vá la lógica del negocio, se gestiona acceso a datos, formato datos, CRUD. 
