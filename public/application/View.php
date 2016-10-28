@@ -18,14 +18,14 @@ Para quitar smarty, comentar: extends Smarty y en constructor el parent::__const
 Ademas en config poner 0 en usar smarty.
 
 */
-class View //extends Smarty
+class View extends Smarty
 {
 	private $_controlador;
 	private $_js;
 
 	public function __construct(Request $peticion)
 	{
-		//parent::__construct();
+		parent::__construct();
 
 		$this->_controlador = $peticion->getControlador();
 		$this->_js = array();

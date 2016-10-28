@@ -3,7 +3,7 @@
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) . DS);
 define('APP_PATH', ROOT . 'application' . DS);
-
+//echo ROOT; exit;
 //phpinfo();exit;
 
 //echo md5('1234'); exit;

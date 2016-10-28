@@ -21,13 +21,14 @@ class postModel extends Model
         return $post->fetch();
     }
 
-    public function insertarPost($titulo, $cuerpo)
+    public function insertarPost($titulo, $cuerpo, $imagen)
     {
-        $this->_db->prepare("INSERT INTO posts VALUES (null, :titulo, :cuerpo)")
+        $this->_db->prepare("INSERT INTO posts VALUES (null, :titulo, :cuerpo, :imagen)")
                 ->execute(
                         array(
                            ':titulo' => $titulo,
-                           ':cuerpo' => $cuerpo
+                           ':cuerpo' => $cuerpo,
+                           ':imagen' => $imagen
                         ));
     }
 

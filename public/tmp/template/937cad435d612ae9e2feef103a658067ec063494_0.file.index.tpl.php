@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-27 17:28:52
+/* Smarty version 3.1.30, created on 2016-10-28 04:03:13
   from "/home/vagrant/Proyectos/plantilla_MVC/public/views/post/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_581239549ace82_82544151',
+  'unifunc' => 'content_5812ce02002dc0_82131761',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '937cad435d612ae9e2feef103a658067ec063494' => 
     array (
       0 => '/home/vagrant/Proyectos/plantilla_MVC/public/views/post/index.tpl',
-      1 => 1477586834,
+      1 => 1477627391,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_581239549ace82_82544151 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5812ce02002dc0_82131761 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <h2>Últimos Posts</h2>
 
@@ -40,6 +40,19 @@ foreach ($_from as $_smarty_tpl->tpl_vars['datos']->value) {
 </td>
         <td><?php echo $_smarty_tpl->tpl_vars['datos']->value['cuerpo'];?>
 </td>
+        <td>
+        <?php if (isset($_smarty_tpl->tpl_vars['datos']->value['imagen'])) {?>
+        <a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
+public/img/post/<?php echo $_smarty_tpl->tpl_vars['datos']->value['imagen'];?>
+">
+            <img src="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
+public/img/post/thumb/thumb_<?php echo $_smarty_tpl->tpl_vars['datos']->value['imagen'];?>
+" />
+            </a>
+        <?php }?>
+        </td>
+
+
         <td><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 post/editar/<?php echo $_smarty_tpl->tpl_vars['datos']->value['id'];?>
 ">Editar</a></td>

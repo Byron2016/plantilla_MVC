@@ -51,6 +51,11 @@ server {
         add_header Content-Type text/javascript;
     }
 
+        location ~ \.png {
+                add_header Content-Type image/png;
+        }
+
+
     location ~ /\.ht {
         deny all;
     }
