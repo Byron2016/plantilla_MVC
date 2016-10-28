@@ -108,6 +108,7 @@ class postController extends Controller
                 //verificar si fue exitoso
                 if($upload->processed){
                     //miniatura de imagen
+                    //https://www.verot.net/php_class_upload.htm
                     $imagen = $upload->file_dst_name;
                     $thumb = new upload($upload->file_dst_pathname);
                     $thumb->image_resize = true;
