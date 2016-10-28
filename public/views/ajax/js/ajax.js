@@ -8,9 +8,9 @@ function inicializarEventos()
   x=$('#pais');
   x.change(cambioSelect);
   $('#btn_insertar').click(function(){
-  	$.post('/ajax/insertarCiudad','pais=' + $('#pais').val() + '&ciudad' + $('#ins_ciudad').val()); 
+  	$.post('/ajax/insertarCiudad','pais=' + $('#pais').val() + '&ciudad=' + $('#ins_ciudad').val(),despliegaRespuestaDatos); 
   	$('#ins_ciudad').val('');
-  	//getCiudadesNuevo();
+  	getCiudadesNuevo();
   });
 }
 
@@ -44,6 +44,11 @@ function llegadaDatos(datos)
 	}
 	
 
+}
+
+function despliegaRespuestaDatos(datos)
+{
+  	//alert("Data: " + datos + "\nStatus: " + status);
 }
 /*
 $(document).ready(function(){

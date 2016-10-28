@@ -1,2 +1,20 @@
 <h2>Ejemplo de AJAX</h2>
 
+<form name="form1" method="post" action="">
+
+    Pais:
+    <select id="pais">
+        <option values=""> -Seleccione- </option>
+        <?php for($i = 0; $i < count($this->paises); $i++): ?>
+        	<option value="<?php echo $this->paises[$i]['id']; ?>"><?php echo $this->paises[$i]['pais']; ?></option>
+        <?php endfor;?>
+    </select>
+    <p></p>
+    Ciudad:
+    <select id="ciudad"> </select>
+    <p></p>
+    Ciudad a insertar:
+    <input type="text" id="ins_ciudad">
+    <input type="button" value="Insertar" id='btn_insertar' >
+</form>
+

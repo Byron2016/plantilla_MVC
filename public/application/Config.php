@@ -28,4 +28,4 @@ define('HASH_KEY', '5806aed8e2552');
 //samrty
 define('SMARTY_DIR_L', ROOT . 'libs' . DS . 'smarty' . DS .  'libs' . DS); 
 define('SMARTY_PRUEBA', '0' ); 
-define('USAR_SMARTY', '1');
+define('USAR_SMARTY', '0');
