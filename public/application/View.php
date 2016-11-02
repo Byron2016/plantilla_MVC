@@ -22,13 +22,15 @@ class View extends Smarty
 {
 	private $_controlador;
 	private $_js;
+	private $_acl;
 
-	public function __construct(Request $peticion)
+	public function __construct(Request $peticion, Acl $_acl)
 	{
 		parent::__construct();
 
 		$this->_controlador = $peticion->getControlador();
 		$this->_js = array();
+		$this->_acl = $_acl;
 	}
 
 	public function renderizar($vista, $item = false)
@@ -143,14 +145,16 @@ class View extends Smarty
 
 		
 		if(USAR_SMARTY == '1'){
+			$this->assign('_acl', $this->_acl);
             $this->assign('_layoutParams', $_params);
-			$this->display('template.tpl');
-            } else {
+			
+        } else {
+        	$this->_acl = $this->_acl;
+            $this->_layoutParams = $_params;
+            
                 
         }
-
-
-
+        $this->display('template.tpl');
 	}
 
 	public function setJs(array $js) 

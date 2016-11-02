@@ -8,6 +8,8 @@ class indexController extends Controller
 
 	public function index()
 	{
+		//if(!$this->_acl->permiso('nuevo_post')) echo 'true'; exit;
+		//echo '<pre>'; print_r($this->_acl->getPermisos());exit;
 		if(USAR_SMARTY == '1'){
 			$this->_view->assign('titulo', 'Portada');
 		} else {

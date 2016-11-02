@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-28 04:03:13
+/* Smarty version 3.1.30, created on 2016-11-02 02:59:21
   from "/home/vagrant/Proyectos/plantilla_MVC/public/views/post/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5812ce02002dc0_82131761',
+  'unifunc' => 'content_5819568921e8e5_26427228',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '937cad435d612ae9e2feef103a658067ec063494' => 
     array (
       0 => '/home/vagrant/Proyectos/plantilla_MVC/public/views/post/index.tpl',
-      1 => 1477627391,
+      1 => 1478055557,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5812ce02002dc0_82131761 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5819568921e8e5_26427228 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <h2>Últimos Posts</h2>
 
@@ -77,9 +77,11 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl);
 <?php if (isset($_smarty_tpl->tpl_vars['paginacion']->value)) {?> <?php echo $_smarty_tpl->tpl_vars['paginacion']->value;
 }?>
 
-<?php if (Session::accesoViewEstricto(array('usuario'))) {?>
+
+<?php if ($_smarty_tpl->tpl_vars['_acl']->value->permiso('nuevo_post')) {?>
     <p><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 post/nuevo">Agregar Post</a></p>
+<?php }?>
+
 <?php }
-}
 }

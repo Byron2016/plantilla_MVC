@@ -19,7 +19,8 @@ class postController extends Controller
         */
 
 
-        Session::accesoEstricto(array('usuario'),false);
+        //Session::accesoEstricto(array('usuario'),false);
+        $this->_acl->acceso('editar_post');
 
         if(!$this->filtrarInt($pagina)){
             $pagina = false;
@@ -45,7 +46,9 @@ class postController extends Controller
     
     public function nuevo()
     {
-        Session::accesoEstricto(array('usuario'),false);
+        //Session::accesoEstricto(array('usuario'),false);
+
+        $this->_acl->acceso('nuevo_post');
         
         //$this->view->prueba = $this->getTexto('titulo');
 
@@ -145,6 +148,7 @@ class postController extends Controller
 
     public function editar($id)
     {
+        $this->_acl->acceso('editar_post');
         if(!$this->filtrarInt($id)){
             $this->redireccionar('post');
         }

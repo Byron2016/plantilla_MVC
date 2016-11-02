@@ -21,6 +21,7 @@ devuelve 1234
 try {
 
 require_once APP_PATH . 'Config.php';
+require_once APP_PATH . 'Acl.php';
 require_once APP_PATH . 'Request.php';
 require_once APP_PATH . 'Bootstrap.php';
 require_once APP_PATH . 'Controller.php';
