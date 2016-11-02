@@ -144,3 +144,137 @@ INSERT INTO `mvc`.`ciudades` (`id`, `ciudad`, `pais`) VALUES (null, 'ciudad 3',1
 
 select * from `mvc`.`paises`;
 select * from `mvc`.`ciudades`;
+
+
+/*****************************************
+
+Hasta antes video 15.
+/*****************************************
+
+CREATE TABLE `ciudades` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ciudad` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `pais` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `paises` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pais` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(150) CHARACTER SET utf8 NOT NULL,
+  `cuerpo` text CHARACTER SET utf8 NOT NULL,
+  `imagen` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `prueba` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+CREATE TABLE `usuarios` (
+  `id` int(4) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `usuario` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `pass` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `role` enum('admin','especial','usuario') COLLATE utf8_spanish_ci DEFAULT NULL,
+  `estado` tinyint(4) DEFAULT NULL,
+  `fecha` datetime NOT NULL,
+  `codigo` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo_UNIQUE` (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+/*****************************************
+
+alter table video 15.
+/*****************************************
+ALTER TABLE `mvc`.`usuarios` 
+CHANGE COLUMN `role` `role` INT NULL DEFAULT NULL ;
+
+DROP TABLE `mvc`.`usuarios`;
+select * from usuarios;
+
+CREATE TABLE `usuarios` (
+  `id` int(4) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `usuario` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `pass` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `role` int NOT NULL,
+  `estado` tinyint(4) DEFAULT NULL,
+  `fecha` datetime NOT NULL,
+  `codigo` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo_UNIQUE` (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO `mvc`.`usuarios` (`id`,`nombre`,`usuario`,`pass`,`email`,`role`,`estado`,`fecha`,`codigo`)
+VALUES (null,'nombre1','admin','f554564b63bfebedb20dab6c1e81132a44580761','admin@amin.com',1,1,now(),1);
+INSERT INTO `mvc`.`usuarios` (`id`,`nombre`,`usuario`,`pass`,`email`,`role`,`estado`,`fecha`,`codigo`)
+VALUES (null,'nombre1','usuario1','f554564b63bfebedb20dab6c1e81132a44580761','admin@amin.com',2,1,now(),2);
+INSERT INTO `mvc`.`usuarios` (`id`,`nombre`,`usuario`,`pass`,`email`,`role`,`estado`,`fecha`,`codigo`)
+VALUES (null,'nombre1','usuario2','f554564b63bfebedb20dab6c1e81132a44580761','admin@amin.com',3,1,now(),3);
+						
+					
+CREATE TABLE `mvc`.`roles`(
+  `id_role` int(11) NOT NULL AUTO_INCREMENT,
+  `role` varchar(100) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id_role`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `mvc`.`permisos`(
+  `id_permiso` int(11) NOT NULL AUTO_INCREMENT,
+  `permiso` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `key` varchar(50) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id_permiso`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `mvc`.`permisos_role`(
+  `role` int(11) NOT NULL ,
+  `permiso` int(11) NOT NULL ,
+  `valor` tinyint  NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+alter table `mvc`.`permisos_role` add unique role(role,permiso);
+
+CREATE TABLE `mvc`.`permisos_usuario`(
+  `usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `permiso` int(11) NOT NULL ,
+  `valor` tinyint  NOT NULL,
+  PRIMARY KEY (`usuario`),
+  unique key usuario(usuario, permiso)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+insert into roles values (null, 'Administrador');
+insert into roles values (null, 'Gestor');
+insert into roles values (null, 'Editor');
+
+insert into permisos values (null, 'Tareas de administración', 'admin_access');
+insert into permisos values (null, 'Agregar Posts', 'nuevo_post');
+insert into permisos values (null, 'Editar Posts', 'editar_post');
+insert into permisos values (null, 'Eliminar Posts', 'eliminar_post');
+
+insert into permisos_role values (1,1,1),(1,2,1),(1,3,1),(1,4,1);
+insert into permisos_role values (2,2,1),(2,3,1),(2,4,1);
+insert into permisos_role values (3,2,1),(3,3,1);
+
+select * from roles;
+select * from permisos;
+select * from permisos_role;
+
+select r.role, p.permiso, pr.valor 
+from roles r, permisos p, permisos_role pr
+where r.id_role = pr.role and p.id_permiso = pr.permiso 
+order by r.role;
+
