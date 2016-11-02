@@ -70,6 +70,9 @@ class Acl
 		$ids = $this->_db->query("select permiso from permisos_role where role = {$this->_role}");
 
 		$ids = $ids->fetchAll(PDO::FETCH_ASSOC);
+
+		$id = array();
+		
 		for($i = 0; $i < count($ids); $i++){
 			$id[] = $ids[$i]['permiso'];
 		}
@@ -133,11 +136,15 @@ class Acl
 	{
 		//retorna permisos del usuario
 		$ids = $this->getPermisosRoleId();
+		if(count($ids)){
 
 		$permisos = $this->_db->query("select * from permisos_usuario where usuario = {$this->_id} and permiso in (". implode(',',$ids) .')');
 
 
 		$permisos = $permisos->fetchAll(PDO::FETCH_ASSOC);
+		} else {
+			$permisos = array();
+		}
 		$data = array();
 
 		for($i = 0; $i < count($permisos); $i++){
