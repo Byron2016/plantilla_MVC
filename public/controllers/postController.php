@@ -157,20 +157,38 @@ class postController extends Controller
             $this->redireccionar('post');
         }
         
-        $this->_view->titulo = 'Editar Post';
+        //$this->_view->titulo = 'Editar Post';
+
+        if(USAR_SMARTY == '1'){
+            $this->_view->assign('titulo','Editar Post');
+        } else {
+            $this->_view->titulo = 'Editar Post';
+        }
+
+
+
         $this->_view->setJs(array('nuevo'));
         
         if($this->getInt('guardar') == 1){
             $this->_view->datos = $_POST;
             
             if(!$this->getTexto('titulo')){
-                $this->_view->_error = 'Debe introducir el titulo del post';
+
+                if(USAR_SMARTY == '1'){
+                    $this->_view->assign('_error','Debe introducir el titulo del post');
+                } else {
+                    $this->_view->_error = 'Debe introducir el titulo del post';
+                }
                 $this->_view->renderizar('editar', 'post');
                 exit;
             }
             
             if(!$this->getTexto('cuerpo')){
-                $this->_view->_error = 'Debe introducir el cuerpo del post';
+                if(USAR_SMARTY == '1'){
+                    $this->_view->assign('_error','Debe introducir el cuerpo del post');
+                } else {
+                    $this->_view->_error = 'Debe introducir el cuerpo del post';
+                }
                 $this->_view->renderizar('editar', 'post');
                 exit;
             }
