@@ -20,7 +20,7 @@ class Acl
 				$this->_id = Session::get('id_usuario');
 
 			} else {
-				$this->_id = 1;
+				$this->_id = 0;
 			}
 		}
 
@@ -67,7 +67,7 @@ class Acl
 
 	public function getPermisosRoleId()
 	{
-		$ids = $this->_db->query("select permiso from permisos_role where role = {$this->_role}");
+		$ids = $this->_db->query("select permiso from permisos_role where role = '{$this->_role}'");
 
 		$ids = $ids->fetchAll(PDO::FETCH_ASSOC);
 
@@ -86,7 +86,7 @@ class Acl
 		//permisos del roll ya procesados
 		//echo "select * from permisos_role where role = {$this->_role}";
 
-		$permisos = $this->_db->query("select * from permisos_role where role = {$this->_role}");
+		$permisos = $this->_db->query("select * from permisos_role where role = '{$this->_role}'");
 
 		$permisos = $permisos->fetchAll(PDO::FETCH_ASSOC);
 		$data = array();
