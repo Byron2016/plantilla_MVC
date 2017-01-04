@@ -16,8 +16,6 @@
             </a>
         {/if}
         </td>
-
-
         <td><a href="{$_layoutParams.root}post/editar/{$datos.id}">Editar</a></td>
         <td><a href="{$_layoutParams.root}post/eliminar/{$datos.id}">Eliminar</a></td>
     </tr> 

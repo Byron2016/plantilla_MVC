@@ -18,8 +18,7 @@ Para quitar smarty, comentar: extends Smarty y en constructor el parent::__const
 Ademas en config poner 0 en usar smarty.
 
 */
-//class View extends Smarty
-class View
+class View extends Smarty
 {
 	private $_controlador;
 	private $_js;
@@ -148,14 +147,12 @@ class View
 		if(USAR_SMARTY == '1'){
 			$this->assign('_acl', $this->_acl);
             $this->assign('_layoutParams', $_params);
+            $this->display('template.tpl');
 			
         } else {
-        	$this->_acl = $this->_acl;
-            $this->_layoutParams = $_params;
-            
-                
+        	$this->_acl = $this->_acl;     
         }
-        $this->display('template.tpl');
+        
 	}
 
 	public function setJs(array $js) 

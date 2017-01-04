@@ -58,9 +58,6 @@ class postController extends Controller
             $this->_view->titulo = 'Nuevo Post';
         }
 
-
-
-
         $this->_view->setJs(array('nuevo'));
         
         if($this->getInt('guardar') == 1){
@@ -130,9 +127,6 @@ class postController extends Controller
                     exit;
                 }
             }
-
-
-
             $this->_post->insertarPost(
                     $this->getPostParam('titulo'),
                     $this->getPostParam('cuerpo'),
@@ -165,10 +159,8 @@ class postController extends Controller
             $this->_view->titulo = 'Editar Post';
         }
 
-
-
         $this->_view->setJs(array('nuevo'));
-        
+
         if($this->getInt('guardar') == 1){
             $this->_view->datos = $_POST;
             
@@ -202,13 +194,20 @@ class postController extends Controller
             $this->redireccionar('post');
         }
         
-        $this->_view->datos = $this->_post->getPost($this->filtrarInt($id)); //los datos de la vista lo llenamos con el registro base datos
+        if(USAR_SMARTY == '1'){
+            $this->_view->assign('posts', $this->_post->getPost($this->filtrarInt($id)));
+                
+        } else {
+            $this->_view->datos = $this->_post->getPost($this->filtrarInt($id)); //los datos de la vista lo llenamos con el registro base datos
+        }
+        
         $this->_view->renderizar('editar', 'post');
     }
 
     public function eliminar($id)
     {
-        Session::acceso('admin');
+        //Session::acceso('admin');
+        $this->_acl->acceso('eliminar_post');
         
         if(!$this->filtrarInt($id)){
             $this->redireccionar('post');

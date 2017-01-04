@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-03 23:54:18
+/* Smarty version 3.1.30, created on 2017-01-04 18:27:52
   from "/home/vagrant/Proyectos/plantilla_MVC/public/views/post/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_586c39aa9caec0_07435488',
+  'unifunc' => 'content_586d3ea8cbcef8_26142144',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '937cad435d612ae9e2feef103a658067ec063494' => 
     array (
       0 => '/home/vagrant/Proyectos/plantilla_MVC/public/views/post/index.tpl',
-      1 => 1483487655,
+      1 => 1483554369,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,9 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_586c39aa9caec0_07435488 (Smarty_Internal_Template $_smarty_tpl) {
+function content_586d3ea8cbcef8_26142144 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
-<h2>Últimos Posts1</h2>
+<h2>Últimos Posts</h2>
 
 <?php if (isset($_smarty_tpl->tpl_vars['posts']->value) && count($_smarty_tpl->tpl_vars['posts']->value)) {?>
 
@@ -51,8 +51,6 @@ public/img/post/thumb/thumb_<?php echo $_smarty_tpl->tpl_vars['datos']->value['i
             </a>
         <?php }?>
         </td>
-
-
         <td><a href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 post/editar/<?php echo $_smarty_tpl->tpl_vars['datos']->value['id'];?>
 ">Editar</a></td>
