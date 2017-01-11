@@ -4,6 +4,7 @@ class Bootstrap
 {
 	public static function run(Request $peticion)
 	{
+		$modulo = $peticion->getModulo();
 		$controller = $peticion->getControlador() . 'Controller';
 		$rutaControlador = ROOT . 'controllers' . DS . $controller . '.php';
 		//echo $rutaControlador;
@@ -15,6 +16,14 @@ class Bootstrap
 		//echo " la rutacontrolador es: ". $rutaControlador . "<br>";
 		//echo " la controller es: ". $controller . "<br>";
 		//echo " la metodo es: ". $metodo . "<br>";
+
+		if($modulo){
+			//revisamos si trabajamos en base a modulo o controlador
+			$rutaModulo = ROOT . 'controllers' . DS . $modulo . $controller . '.php'; //revisa si hay controlador base para el modulo. El proposito de este es q proporcione código para el módulo completo.
+			if(is_readable($rutaModulo)){
+				require_once $rutaModulo;
+			}
+		}
 
 		if(is_readable($rutaControlador)){
 			//vverificar si archivo existe y es legible
