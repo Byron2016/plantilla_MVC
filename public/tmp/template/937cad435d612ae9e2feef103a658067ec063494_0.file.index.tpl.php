@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-04 18:27:52
+/* Smarty version 3.1.30, created on 2017-01-11 17:27:01
   from "/home/vagrant/Proyectos/plantilla_MVC/public/views/post/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_586d3ea8cbcef8_26142144',
+  'unifunc' => 'content_58766ae5f2e431_48126015',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_586d3ea8cbcef8_26142144 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58766ae5f2e431_48126015 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <h2>Últimos Posts</h2>
 

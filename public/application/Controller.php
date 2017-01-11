@@ -7,7 +7,8 @@ abstract class Controller
 	
 	public function __construct()
 	{
-        $this->_acl = new Acl();
+        $this->_acl = new ACL();
+        //echo "en controller", exit;
 		$this->_view = new View(new Request, $this->_acl);
 	}
 

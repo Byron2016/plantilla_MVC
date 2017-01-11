@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-11-02 03:41:15
+/* Smarty version 3.1.30, created on 2017-01-11 17:21:11
   from "/home/vagrant/Proyectos/plantilla_MVC/public/views/acl/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5819605b8376f1_77282377',
+  'unifunc' => 'content_587669878ca0d1_17775846',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5819605b8376f1_77282377 (Smarty_Internal_Template $_smarty_tpl) {
+function content_587669878ca0d1_17775846 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <h2>Listas de Acceso</h2>
 

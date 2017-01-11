@@ -24,7 +24,7 @@ class View extends Smarty
 	private $_js;
 	private $_acl;
 
-	public function __construct(Request $peticion, Acl $_acl)
+	public function __construct(Request $peticion, ACL $_acl)
 	{
 		parent::__construct();
 

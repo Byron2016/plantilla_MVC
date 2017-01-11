@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-04 21:29:07
+/* Smarty version 3.1.30, created on 2017-01-11 17:21:49
   from "/home/vagrant/Proyectos/plantilla_MVC/public/views/acl/permisos_role.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_586d6923a7eb36_69433878',
+  'unifunc' => 'content_587669ad6e24d9_24056210',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_586d6923a7eb36_69433878 (Smarty_Internal_Template $_smarty_tpl) {
+function content_587669ad6e24d9_24056210 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <h2>Administración de permisos role</h2>
 

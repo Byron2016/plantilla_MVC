@@ -1,7 +1,7 @@
 <?php 
 
 
-class Acl 
+class ACL 
 {
 	private $_db;
 	private $_id;
@@ -10,9 +10,12 @@ class Acl
 
 	public function __construct($id = false)
 	{
+		//echo $id . '<br>';
+
 		if($id)
 		{
-			$this->_id = (int) id;
+			//echo "en acl function __construct dentro if"  . '<br>'; //exit;
+			$this->_id = (int) $id;
 
 		} else {
 			//si usuario no ha iniciado sesion
@@ -24,11 +27,10 @@ class Acl
 			}
 		}
 
-		$this->_db = new DataBase();
-		$this->_role = $this->getRole();
-		$this->_permisos = $this->getPermisosRole();
-		$this->compilarAcl();
-
+		$this->_db = new DataBase(); //echo "en 1"  . '<br>';
+		$this->_role = $this->getRole(); //echo "en 2"  . '<br>';
+		$this->_permisos = $this->getPermisosRole(); //echo "en 3"  . '<br>';
+		$this->compilarAcl();  //echo "en 4"  . '<br>';
 	}
 
 	public function compilarAcl()
@@ -37,7 +39,7 @@ class Acl
 		$this->_permisos = array_merge(
 			$this->_permisos,
 			$this->getPermisosUsuario()
-			);
+			); 
 	}
 
 	public function getRole()
@@ -137,16 +139,22 @@ class Acl
 		//retorna permisos del usuario
 		$ids = $this->getPermisosRoleId();
 		if(count($ids)){
+			//echo 'aca';
+			//echo "select * from permisos_usuario where usuario = {$this->_id} and permiso in (". implode(',',$ids) .')';
 
-		$permisos = $this->_db->query("select * from permisos_usuario where usuario = {$this->_id} and permiso in (". implode(',',$ids) .')');
+			$permisos = $this->_db->query("select * from permisos_usuario where usuario = {$this->_id} and permiso in (". implode(',',$ids) .')');
+			
 
-
-		$permisos = $permisos->fetchAll(PDO::FETCH_ASSOC);
+			$permisos = $permisos->fetchAll(PDO::FETCH_ASSOC);
 		} else {
+			//echo 'else';
 			$permisos = array();
 		}
 		$data = array();
 
+		//echo count($permisos);exit;
+
+			
 		for($i = 0; $i < count($permisos); $i++){
 			$key = $this->getPermisoKey($permisos[$i]['permiso']);
 			if($key == ''){continue;}
@@ -163,6 +171,13 @@ class Acl
 				'heredado' => false,
 				'id' => $permisos[$i]['permiso']
 			);
+			/*
+
+			if($i == 1){
+				echo 'entro if';
+				var_dump($data); exit;
+			}
+			*/
 
 		}
 
@@ -188,10 +203,12 @@ class Acl
 	public function acceso($key)
 	{
 		if($this->permiso($key)){
+			//Session::tiempo(); //para controlar tiempos. en este momento lo desabilito.
 			return;
 		}
 
 		header('location:' . BASE_URL . 'error/access/5050');
+		exit;
 	}
 
 }

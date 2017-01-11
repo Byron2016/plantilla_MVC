@@ -6,6 +6,7 @@ class Bootstrap
 	{
 		$controller = $peticion->getControlador() . 'Controller';
 		$rutaControlador = ROOT . 'controllers' . DS . $controller . '.php';
+		//echo $rutaControlador;
 
 		$metodo =  $peticion->getMetodo();
 		$args = $peticion->getArgs();
@@ -33,7 +34,7 @@ class Bootstrap
 				call_user_func(array($controller, $metodo));
 			}
 		} else {
-			throw new Exception('Error en Bootstrap1: No encontrado');
+			throw new Exception('Error en Bootstrap1: No encontrado: ' . $rutaControlador);
 		}
 
 	}

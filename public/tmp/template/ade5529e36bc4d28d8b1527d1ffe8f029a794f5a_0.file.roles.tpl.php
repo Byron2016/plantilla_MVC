@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2017-01-04 19:51:37
+/* Smarty version 3.1.30, created on 2017-01-11 17:21:30
   from "/home/vagrant/Proyectos/plantilla_MVC/public/views/acl/roles.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_586d5249b2ce26_27551198',
+  'unifunc' => 'content_5876699a0f44f6_23207860',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_586d5249b2ce26_27551198 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5876699a0f44f6_23207860 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <h2>Administración de roles</h2>
 <?php if (isset($_smarty_tpl->tpl_vars['roles']->value) && count($_smarty_tpl->tpl_vars['roles']->value)) {?>

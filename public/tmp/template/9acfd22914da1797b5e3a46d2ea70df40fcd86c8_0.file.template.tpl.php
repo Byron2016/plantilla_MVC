@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-27 18:08:03
+/* Smarty version 3.1.30, created on 2017-01-11 16:52:14
   from "/home/vagrant/Proyectos/plantilla_MVC/public/views/layout/layout1/template.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58124283dcfd16_08294090',
+  'unifunc' => 'content_587662be699595_08694538',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58124283dcfd16_08294090 (Smarty_Internal_Template $_smarty_tpl) {
+function content_587662be699595_08694538 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

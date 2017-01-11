@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-28 04:23:11
+/* Smarty version 3.1.30, created on 2017-01-11 17:58:55
   from "/home/vagrant/Proyectos/plantilla_MVC/public/views/post/nuevo.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_5812d2afd98d02_14976104',
+  'unifunc' => 'content_5876725f25cca5_15750932',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5812d2afd98d02_14976104 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5876725f25cca5_15750932 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <form id="form1" method="post" action="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 post/nuevo" enctype='multipart/form-data'>

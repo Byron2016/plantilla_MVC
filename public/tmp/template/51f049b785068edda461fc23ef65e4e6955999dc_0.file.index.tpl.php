@@ -1,11 +1,11 @@
 <?php
-/* Smarty version 3.1.30, created on 2016-10-27 17:49:05
+/* Smarty version 3.1.30, created on 2017-01-11 17:26:52
   from "/home/vagrant/Proyectos/plantilla_MVC/public/views/login/index.tpl" */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.30',
-  'unifunc' => 'content_58123e11b8d714_68713938',
+  'unifunc' => 'content_58766adc8de280_13518696',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_58123e11b8d714_68713938 (Smarty_Internal_Template $_smarty_tpl) {
+function content_58766adc8de280_13518696 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <h2>Iniciar Sesi&oacute;n</h2>
 
