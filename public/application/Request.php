@@ -22,21 +22,23 @@ class Request
 			/*modulos de la aplicación */
 			$this->_modules = array('usuarios'); //aca van los modulos q vayamos agregando
 			$this->_modulo = strtolower(array_shift($url));
+			//echo 'el modulo: ' . $this->_modulo . '<br>';
 
 			//proceso devolver módulo o controlador
-			if(!$this->modulo){
+			if(!$this->_modulo){
 				$this->_modulo = false;
+				//echo 'aaa';
 			}
 			else {
 				if(count($this->_modules)){
 					if(!in_array($this->_modulo, $this->_modules)){
 						$this->_controlador = $this->_modulo;
-						$this->_modulo = false;
+						$this->_modulo = false; 
 					}
 					else{
-						$this->_controlador = strtolower(array_shift($url));
-						if(!$this->controlador){
-							$this->_controlador = 'index';
+						$this->_controlador = strtolower(array_shift($url)); 
+						if(!$this->_controlador){
+							$this->_controlador = 'index'; 
 						}
 					}
 
@@ -62,6 +64,8 @@ class Request
 		if(!isset($this->_argumentos)){
 			$this->_argumentos = array();
 		}
+
+		//echo $this->_modulo . '/' . $this->_controlador . '/' . $this->_metodo . '/' ; print_r($this->_argumentos); exit;
 
 	}
 
