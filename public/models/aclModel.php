@@ -1,5 +1,6 @@
 <?php
 
+
 class aclModel extends Model
 {
     public function __construct() {
