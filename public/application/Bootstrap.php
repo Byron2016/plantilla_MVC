@@ -19,8 +19,9 @@ class Bootstrap
 
 		if($modulo){
 			//revisamos si trabajamos en base a modulo o controlador
-			$rutaModulo = ROOT . 'modules' . DS . $modulo . DS . 'controllers' . DS . $controller . '.php'; //revisa si hay controlador base para el modulo. El proposito de este es q proporcione código para el módulo completo.
-			//echo $rutaModulo;
+			$rutaModulo = ROOT . 'controllers' . DS . $modulo . 'Controller.php';
+			//$rutaModulo = ROOT . 'modules' . DS . $modulo . DS . 'controllers' . DS . $controller . '.php'; //revisa si hay controlador base para el modulo. El proposito de este es q proporcione código para el módulo completo.
+			//echo $rutaModulo . '<br>'; exit;
 			if(is_readable($rutaModulo)){
 				require_once $rutaModulo;
 				$rutaControlador = ROOT . 'modules' . DS . $modulo . DS .  'controllers' . DS . $controller . '.php';
@@ -34,10 +35,11 @@ class Bootstrap
 			//echo $rutaControlador;
 		}
 
-		//echo $rutaControlador; exit;
+		//echo $rutaControlador . '<br>'; exit;
 
 		if(is_readable($rutaControlador)){
 			//vverificar si archivo existe y es legible
+
 			require_once $rutaControlador;
 
 			$controller = new $controller;

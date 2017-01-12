@@ -41,6 +41,7 @@ class Request
 							$this->_controlador = 'index'; 
 						}
 					}
+					//echo 'el controlador: ' . $this->_controlador . '<br>';
 
 				}
 				else {
@@ -65,7 +66,7 @@ class Request
 			$this->_argumentos = array();
 		}
 
-		//echo $this->_modulo . '/' . $this->_controlador . '/' . $this->_metodo . '/' ; print_r($this->_argumentos); exit;
+		//echo '/mo ' .$this->_modulo . '/c ' . $this->_controlador . '/ m ' . $this->_metodo . '/' ; print_r($this->_argumentos); exit;
 
 	}
 

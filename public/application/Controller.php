@@ -4,21 +4,33 @@ abstract class Controller
 {
 	protected $_view;
     protected $_acl;
+    protected $_request;
 	
 	public function __construct()
 	{
         $this->_acl = new ACL();
         //echo "en controller", exit;
-		$this->_view = new View(new Request, $this->_acl);
+        $this->_request = new Request();
+		$this->_view = new View($this->_request, $this->_acl);
 	}
 
 	abstract public function index();
 
-    protected function loadModel($modelo) 
+    protected function loadModel($modelo, $modulo = false) 
     {
         $modelo = $modelo . 'Model';
         $rutaModelo = ROOT . 'models' . DS . $modelo . '.php';
         //echo $rutaModelo;
+        if(!$modulo){
+            $modulo = $this->_request->getModulo();
+        }
+        if($modulo){
+            if($modulo != 'default'){
+                
+                $rutaModelo = ROOT . 'modules' . DS . $modulo . DS . 'models' . DS . $modelo .  '.php'; 
+            }
+        }
+
         if (is_readable($rutaModelo))
         {
             //echo 'si es legible';
