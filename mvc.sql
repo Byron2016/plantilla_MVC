@@ -31,25 +31,17 @@ CREATE TABLE IF NOT EXISTS `ciudades` (
   `ciudad` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `pais` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
+;
 --
 -- Volcado de datos para la tabla `ciudades`
 --
 
 INSERT INTO `ciudades` (`id`, `ciudad`, `pais`) VALUES
-(1, 'ciudad 1', 1),
-(2, 'ciudad 2', 1),
-(3, 'ciudad 3', 1),
-(4, 'ciudad 4', 4),
-(5, 'insertada 1', 1),
-(6, 'insertada 2', 1),
-(7, 'a', 2),
-(8, 'b', 1),
-(9, 'n', 4),
-(10, 't', 1),
-(11, 'y', 1),
-(12, 'gg', 1),
-(13, 'rt', 1);
+(1, 'ciudad 1_1', 1),
+(2, 'ciudad 2_2', 2),
+(3, 'ciudad 3_1', 1),
+(4, 'ciudad 4_2', 4);
+
 
 -- --------------------------------------------------------
 
@@ -169,9 +161,12 @@ INSERT INTO `posts` (`id`, `titulo`, `cuerpo`, `imagen`) VALUES
 -- Estructura de tabla para la tabla `prueba`
 --
 
-CREATE TABLE IF NOT EXISTS `prueba` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(100) CHARACTER SET utf8 NOT NULL
+CREATE TABLE `prueba` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `id_pais` int(11) DEFAULT NULL,
+  `id_ciudad` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=601 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -780,6 +775,13 @@ INSERT INTO `prueba` (`id`, `nombre`) VALUES
 (599, 'nombre 298'),
 (600, 'nombre 299');
 
+update prueba set id_pais=1, id_ciudad = 1 where id between 1 and 75;
+update prueba set id_pais=1, id_ciudad = 3 where id between 76 and 150;
+  update prueba set id_pais=2, id_ciudad = 2 where id between 151 and 225;
+update prueba set id_pais=2, id_ciudad = 4 where id > 225;
+
+select r.*, p.pais, c.ciudad from prueba r, paises p, ciudades c 
+where r.id_pais = p.id and r.id_ciudad = c.id;
 -- --------------------------------------------------------
 
 --
