@@ -4,6 +4,7 @@
         <title>{$titulo|default:"Sin t&iacute;tulo"}</title>
         <meta charset="utf-8">
         <link href="{$_layoutParams.ruta_css}bootstrap.css" rel="stylesheet" type="text/css">
+        
         <script type="text/javascript" src="{$_layoutParams.root}public/js/jquery.js"></script>
         <script type="text/javascript" src="{$_layoutParams.root}public/js/jquery.validate.js"></script>
     {if isset($_layoutParams.js) && count($_layoutParams.js)}

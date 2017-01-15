@@ -19,7 +19,7 @@ class Paginador
 		{
 			$limite = $limite;
 		} else {
-			$limite = 10;
+			$limite = 5;
 		}
 
 		if($pagina && is_numeric($pagina))

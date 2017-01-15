@@ -1,6 +1,6 @@
-<h6>Prueba</h6>
+<h6>Prueba Ajax</h6>
 
-<div id="lista_registros">
+<div id="lista_registros"> {* este id viene de prueba_ajax.js  *}
     {if isset($posts) && count($posts)}
         <table class="table table-bordered table-condensed table-striped">
             <tr>

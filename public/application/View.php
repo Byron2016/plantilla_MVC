@@ -51,7 +51,7 @@ class View extends Smarty
 		}
 	}
 
-	public function renderizar($vista, $item = false)
+	public function renderizar($vista, $item = false, $noLayout = false)
 	{
 
 		if(USAR_SMARTY == '1'){
@@ -139,6 +139,13 @@ class View extends Smarty
                 'enlace' => BASE_URL . 'post/prueba',
                 'imagen' => 'icon-random'
                 ),
+
+            array(
+                'id' => 'prueba2',
+                'titulo' => 'Prueba paginaci&oacute;n con AJAX',
+                'enlace' => BASE_URL . 'post/prueba2',
+                'imagen' => 'icon-random'
+                ),
             
             array(
                 'id' => 'pdf',
@@ -173,6 +180,7 @@ class View extends Smarty
 			'menu_right' => $menuRight,
 			'item' => $item,
             'js' => $js,
+            'js_plugin' => $this->_jsPlugin,
             'root' => BASE_URL,
             'configs' => array(
             	'app_name' =>APP_NAME,
@@ -207,6 +215,11 @@ class View extends Smarty
         //echo '<pre>'; print_r($this->_rutas); exit;
 
 		if(is_readable($this->_rutas['view'] . $vista . '.tpl')){
+            if($noLayout){
+                $this->template_dir = $this->_rutas['view'];
+                $this->display( $this->_rutas['view'] . $vista . '.tpl');
+                exit;
+            }
 			
 			if(USAR_SMARTY == '1'){
             	$this->assign('_contenido',$this->_rutas['view'] . $vista . '.tpl');

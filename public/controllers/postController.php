@@ -58,6 +58,7 @@ class postController extends Controller
             $this->_view->titulo = 'Nuevo Post';
         }
 
+        $this->_view->setJsPlugin(array('jquery.validate'));
         $this->_view->setJs(array('nuevo'));
         
         if($this->getInt('guardar') == 1){
@@ -238,8 +239,6 @@ class postController extends Controller
         $this->getLibrary('paginador','paginador');
         $paginador = new Paginador();
 
-
-
         if(USAR_SMARTY == '1'){
             $this->_view->assign('posts', $paginador->paginar($this->_post->getPrueba(),$pagina));
             $this->_view->assign('paginacion', $paginador->getView('prueba','post/prueba'));
@@ -250,7 +249,37 @@ class postController extends Controller
             $this->_view->titulo = 'Post';
         }
 
-        $this->_view->renderizar('prueba', 'post');
+        $this->_view->renderizar('prueba', 'prueba', false);
+    }
+
+    public function prueba2($pagina = false)
+    {
+
+        //Este método es con paginacion
+        $this->getLibrary('paginador','paginador');
+        $paginador = new Paginador();
+        $this->_view->setJs(array('prueba_ajax'));
+        $this->_view->assign('posts', $paginador->paginar($this->_post->getPrueba(),$pagina));
+        $this->_view->assign('paginacion', $paginador->getView('paginacion_ajax'));
+        $this->_view->assign('titulo', 'Post');
+        $this->_view->renderizar('prueba2', 'prueba2', false);
+    }
+
+    public function pruebaAjax()
+    {
+        //Este método va a traer la paginación.
+        //Trabaja con prueba2
+        $pagina = $this->getInt('pagina');
+
+        $this->getLibrary('paginador','paginador');
+        $paginador = new Paginador();
+        $this->_view->setJs(array('prueba_ajax'));
+        //solo para smarty va a funcionar
+        $this->_view->assign('posts', $paginador->paginar($this->_post->getPrueba(),$pagina));
+        $this->_view->assign('paginacion', $paginador->getView('paginacion_ajax'));
+
+        $this->_view->renderizar('ajax/prueba', false, true);
+        //se crea vista para demas registros para eso se crea carpeta ajax y colocar archivo de smarty.
     }
 }
 
