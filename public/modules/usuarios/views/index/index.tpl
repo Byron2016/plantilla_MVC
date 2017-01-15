@@ -2,15 +2,13 @@
 
 {if isset($usuarios) && count($usuarios)}
 
-<table>
-    <tr>
-        <td>ID</td>
-        <td>Usuarios</td>
-        
-        <td>Role</td>
-        <td></td>
-
-    </tr>
+<table class="table table-bordered table-condensed table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Usuario</th>
+            <th>Role</th>
+            <th></th>
+        </tr>
 
     {foreach  item=us from=$usuarios}
         <tr>

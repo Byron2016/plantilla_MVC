@@ -112,6 +112,7 @@ class indexController extends usuariosController
 			$this->_view->assign('role', $permisosRole);
 			//$this->_view->assign('infoa', $this->_usuarios->getUsuario($id));
 			$this->_view->assign('infoa', $usurioConsulta);
+			$this->_view->assign('xxx', $this->_usuarios->getUsuario($id));
 			//var_dump($this->_usuarios->getUsuario($id)); //exit;
 			//var_dump($usurioConsulta);
 		} else {

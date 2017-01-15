@@ -2,7 +2,21 @@
 
 {if isset($posts) && count($posts)}
 
-<table>
+<table class="table table-bordered table-condensed table-striped">
+
+    <tr>
+        <th>ID</th>
+        <th>Titulo</th>
+        <th>Cuerpo</th>
+        <th>Imagen</th>
+         
+        {if $_acl->permiso('editar_post')}
+            <th></th>
+        {/if}
+        {if $_acl->permiso('eliminar_post')}
+            <th></th>
+        {/if}
+    </tr>
 
     {foreach  item=datos from=$posts}
     <tr>

@@ -1,54 +1,48 @@
 <h2>Vista _paginacion</h2>
+<div class="pagination" style="text-align: center;">
+    <ul>
 <?php if(isset($this->_paginacion)): ?>
 	<?php if(isset($this->_paginacion['primero'])): ?>
-		<a href="<?php echo $link . $this->_paginacion['primero']; ?>">Primero</a>
+		<li><a href="<?php echo $link . $this->_paginacion['primero']; ?>">&Lt;</a></li>
 	<?php else: ?>
-		Primero;
+		<li class="disabled"><span>&Lt;</span></li>
 	<?php endif; ?>
-
-&nbsp;
 
 	<?php if(isset($this->_paginacion['anterior'])): ?>
-		<a href="<?php echo $link . $this->_paginacion['anterior']; ?>">Anterior</a>
+		<li><a href="<?php echo $link . $this->_paginacion['anterior']; ?>">&lt;</a></li>
 	<?php else: ?>
-		Anterior;
+		<li class="disabled"><span>&lt;</span></li>
 	<?php endif; ?>
-
-&nbsp;
 
 	<?php for($i = 0; $i < count($this->_paginacion['rango']); $i++): ?>
 
 		<?php if($this->_paginacion['actual'] == $this->_paginacion['rango'][$i]): ?>
 
-			<?php echo $this->_paginacion['rango'][$i]; ?>
+			<li class="active"><span><?php echo $this->_paginacion['rango'][$i]; ?></span></li>
 		
 		<?php else: ?>
 
-			<a href="<?php echo $link . $this->_paginacion['rango'][$i]; ?>">
-
-			<?php echo $this->_paginacion['rango'][$i]; ?>
-
-			</a>&nbsp;
+                <li>
+                    <a href="<?php echo $link . $this->_paginacion['rango'][$i]; ?>">
+                        <?php echo $this->_paginacion['rango'][$i]; ?>
+                    </a>
+                </li>
 
 		<?php endif; ?>
 
 	<?php endfor; ?>
 
-&nbsp;
-
 	<?php if(isset($this->_paginacion['siguiente'])): ?>
-		<a href="<?php echo $link . $this->_paginacion['siguiente']; ?>">Siguiente</a>
+		<li><a href="<?php echo $link . $this->_paginacion['siguiente']; ?>">&gt;</a></li>
 	<?php else: ?>
-		Siguiente;
+		<li class="disabled"><span>&gt;</span></li>
 	<?php endif; ?>
-
-&nbsp;
 
 	<?php if(isset($this->_paginacion['ultimo'])): ?>
-		<a href="<?php echo $link . $this->_paginacion['ultimo']; ?>">Ultimo</a>
+		<li><a href="<?php echo $link . $this->_paginacion['ultimo']; ?>">&Gt;</a></li>
 	<?php else: ?>
-		Ultimo;
+		<li class="disabled"><span>&Gt;</span></li>
 	<?php endif; ?>
-
+    </ul>
+</div>
 <?php endif; ?>
-

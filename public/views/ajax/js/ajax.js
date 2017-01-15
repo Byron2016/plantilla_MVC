@@ -1,21 +1,76 @@
+
+$(document).ready(function(){
+
+    var getCiudades = function(){
+        $.ajax({
+            url     : '/ajax/getCiudades',
+            type    : "post",
+            dataType: "json",
+            data    : 'pais=' + $("#pais").val(),
+            success : function( datos ) {
+                $("#ciudad").html('');
+                for(var i = 0; i < datos.length; i++){
+                    $("#ciudad").append('<option value="' + datos[i].id + '">' + datos[i].ciudad + '</option>');
+                }
+            }
+        });
+    }
+
+    $("#pais").change(function(){
+        if(!$("#pais").val()){
+            $("#ciudad").html('');
+        }
+        else{
+           getCiudades(); 
+        }
+        return false;
+    });
+
+    $("#btn_insertar").click(function(){
+        //InsertaCiudades();
+        //getCiudades();
+        $.post('/ajax/insertarCiudad','pais=' + $("#pais").val() + '&ciudad=' + $("#ins_ciudad").val(),function(data){
+        	//alert("Data: " + data + "\nStatus: " + status);
+          //console.log(data);
+          $("#ins_ciudad").val('');
+          getCiudades();
+            
+        }); 
+       //alert(" es 1 ");
+        
+        //alert(" es 2 ");
+        
+        //alert(" es 3 ");
+        return false;
+    });
+
+});
+
+/*
+
 var x;
 x=$(document);
 x.ready(inicializarEventos);
 
 function inicializarEventos()
 {
+
   var x;
   x=$('#pais');
   x.change(cambioSelect);
   $('#btn_insertar').click(function(){
-  	$.post('/ajax/insertarCiudad','pais=' + $('#pais').val() + '&ciudad=' + $('#ins_ciudad').val(),despliegaRespuestaDatos); 
-  	$('#ins_ciudad').val('');
-  	getCiudadesNuevo();
-  });
+  	//alert("inicializarEventos presionado boton");
+  	    $.post('/ajax/insertarCiudad',
+        'pais=' + $("#pais").val() + '&ciudad=' + $("#ins_ciudad").val())
+        
+        $("#ins_ciudad").val('');
+    });
+  cambioSelect();
 }
 
 function cambioSelect()
 {
+	//alert("cambioSelect");
 	var v = $('#pais').val();
 
 	if(!$('#pais').val()){
@@ -27,13 +82,19 @@ function cambioSelect()
 
 function getCiudadesNuevo()
 {
+	
+	//alert("getCiudadesNuevo");
 	var v=$("#pais").val();
-	$.post('/ajax/getCiudades','pais=' + $('#pais').val(),llegadaDatos,'json'); 
-
+	$.post('/ajax/getCiudades','pais=' + $('#pais').val(),function(data, status){
+		//alert("getCiudadesNuevo luego getCiudades");
+		//alert("Data: " + data + "\nStatus: " + status);
+		llegadaDatos(data);
+	},'json'); 
 }
 
 function llegadaDatos(datos)
 {
+	//alert("llegadaDatos");
   	//alert("Data: " + datos + "\nStatus: " + status);
 
   	var cantDatos = datos.length;
@@ -42,14 +103,14 @@ function llegadaDatos(datos)
 	for(var i=0; i< datos.length; i++){
 		$('#ciudad').append('<option value="' + datos[i].id + '">' + datos[i].ciudad + '</option>');
 	}
-	
-
 }
 
 function despliegaRespuestaDatos(datos)
 {
-  	//alert("Data: " + datos + "\nStatus: " + status);
+  	alert("Data: " + datos + "\nStatus: " + status);
 }
+
+*/
 /*
 $(document).ready(function(){
 	var getCiudades = function(){

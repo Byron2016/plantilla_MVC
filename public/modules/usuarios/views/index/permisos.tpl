@@ -1,18 +1,15 @@
 <h2>Permisos de Usuario</h2>
 
-{foreach  item=us from=$infoa}
-
-
-<h3>Usuario: {$us.usuario}<br /> Role:{$us.role}</h3>
-
-{/foreach}
+<p>
+    <strong>Usuario:</strong> {$xxx.usuario} | <strong>Role:</strong> {$xxx.role}
+</p>
 
 
 <form name='form1' method='post' action=''>
     <input type="hidden" name="guardar" value ='1'/>
 
     {if isset($permisos) && count($permisos)}
-        <table>
+        <table class="table table-bordered table-condensed table-striped">
             <tr>
                 <th>Permiso</th>
                 <th></th>

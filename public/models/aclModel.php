@@ -109,4 +109,11 @@ class aclModel extends Model
 
         return $permiso['permiso'];
     }
+
+    public function getPermisos()
+    {
+        $permisos = $this->_db->query("SELECT * FROM permisos");
+        
+        return $permisos->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -113,4 +113,11 @@ class aclController extends Controller
 		$this->_view->assign('permisos', $this->_aclm->getPermisosRole($id));
 		$this->_view->renderizar('permisos_role');
 	}
+
+	public function permisos()
+    {
+        $this->_view->assign('titulo', 'Administracion de permisos');
+        $this->_view->assign('permisos', $this->_aclm->getPermisos());
+        $this->_view->renderizar('permisos', 'acl');
+    }
 }

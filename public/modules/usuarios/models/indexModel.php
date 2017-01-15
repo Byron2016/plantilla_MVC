@@ -18,7 +18,8 @@ class indexModel extends Model
     {
         //echo "select u.*, r.role from usuarios u, roles r where u.role = r.id_role and u.id = $usuarioID"; exit;
     	$usuarios = $this->_db->query("select u.*, r.role from usuarios u, roles r where u.role = r.id_role and u.id = $usuarioID");
-    	return $usuarios->fetchAll(PDO::FETCH_ASSOC);
+    	//return $usuarios->fetchAll(PDO::FETCH_ASSOC);
+        return $usuarios->fetch();
 
     }
 

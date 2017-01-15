@@ -22,9 +22,8 @@ class ajaxModel extends Model
     public function insertarCiudad($ciudad, $pais)
     {
         $sql = "insert into ciudades values (null, '$ciudad', $pais)";
-        //return $sql;
+        //echo $sql;
     	$paises = $this->_db->query("insert into ciudades values (null, '$ciudad', $pais)");
+        //return $sql;
     }
-
-
 }

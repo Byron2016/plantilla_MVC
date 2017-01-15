@@ -1,4 +1,5 @@
 https://www.youtube.com/watch?v=BO2lzbSNvy0&list=PLMVWdD5bcndrmfgQdYeZqTx-OP8SQilJK
+xDEBUG: http://thecancerus.com/debugging-php-using-xdebug-and-notepad-part-i/
 
 1.- 01 - PHP:POO+MVC - Crear un framework básico  (estructura básica y patrón MVC) ()
 	1.1.- MVC
@@ -279,4 +280,79 @@ select r.role, p.permiso, pr.valor
 from roles r, permisos p, permisos_role pr
 where r.id_role = pr.role and p.id_permiso = pr.permiso 
 order by r.role;
+
+
+******************************
+*******************************
+*****************************
+
+CREATE TABLE `ciudades` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `ciudad` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `pais` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `paises` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `pais` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `permisos` (
+  `id_permiso` int(11) NOT NULL AUTO_INCREMENT,
+  `permiso` varchar(100) CHARACTER SET utf8 NOT NULL,
+  `key` varchar(50) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id_permiso`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `roles` (
+  `id_role` int(11) NOT NULL AUTO_INCREMENT,
+  `role` varchar(100) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id_role`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `usuarios` (
+  `id` int(4) unsigned NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `usuario` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `pass` varchar(40) COLLATE utf8_spanish_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `role` int(11) NOT NULL,
+  `estado` tinyint(4) DEFAULT NULL,
+  `fecha` datetime NOT NULL,
+  `codigo` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `codigo_UNIQUE` (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `permisos_role` (
+  `role` int(11) NOT NULL,
+  `permiso` int(11) NOT NULL,
+  `valor` tinyint(4) NOT NULL,
+  UNIQUE KEY `role` (`role`,`permiso`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `permisos_usuario` (
+  `usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `permiso` int(11) NOT NULL,
+  `valor` tinyint(4) NOT NULL,
+  UNIQUE KEY `usuario` (`usuario`,`permiso`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(150) CHARACTER SET utf8 NOT NULL,
+  `cuerpo` text CHARACTER SET utf8 NOT NULL,
+  `imagen` varchar(100) COLLATE utf8_spanish_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+CREATE TABLE `prueba` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) CHARACTER SET utf8 NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=601 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
 

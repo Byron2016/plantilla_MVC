@@ -20,7 +20,7 @@ class Request
 			//1.- modulo/controlador/metodo/argumentos
 			//2.- controlador/metodo/argumentos
 			/*modulos de la aplicación */
-			$this->_modules = array('usuarios'); //aca van los modulos q vayamos agregando
+			$this->_modules = array('usuarios'); //MODULOS: aca van los modulos q vayamos agregando
 			$this->_modulo = strtolower(array_shift($url));
 			//echo 'el modulo: ' . $this->_modulo . '<br>';
 
