@@ -40,8 +40,10 @@ INSERT INTO `ciudades` (`id`, `ciudad`, `pais`) VALUES
 (1, 'ciudad 1_1', 1),
 (2, 'ciudad 2_2', 2),
 (3, 'ciudad 3_1', 1),
-(4, 'ciudad 4_2', 4);
+(4, 'ciudad 4_2', 2);
 
+ALTER TABLE `mvc`.`ciudades` 
+ADD PRIMARY KEY (`id`);
 
 -- --------------------------------------------------------
 

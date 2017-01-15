@@ -19,7 +19,7 @@ class Paginador
 		{
 			$limite = $limite;
 		} else {
-			$limite = 5;
+			$limite = 10;
 		}
 
 		if($pagina && is_numeric($pagina))
@@ -41,6 +41,7 @@ class Paginador
 		$paginacion = array();
 		$paginacion['actual'] = $pagina;
 		$paginacion['total'] = $total;
+		$paginacion['limite'] = $limite;
 
 		if($pagina > 1){
 			$paginacion['primero'] = 1;

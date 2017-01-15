@@ -59,9 +59,9 @@ class postModel extends Model
                         ));
     }
 
-    public function getPrueba()
+    public function getPrueba($condicion = '')
     {
-        $post = $this->_db->query("select * from prueba ");
+        $post = $this->_db->query("select r.*, p.pais, c.ciudad from prueba r, paises p, ciudades c where r.id_pais = p.id and r.id_ciudad = c.id $condicion order by id asc");
         return $post->fetchAll();
     }}
 

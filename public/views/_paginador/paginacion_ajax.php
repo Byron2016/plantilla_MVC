@@ -54,4 +54,18 @@
 		
 	</ul>
 </div>
+<div style="text-align: center">
+	<p>
+		<small>Pagina <?php echo $this->_paginacion['actual']; ?> de <?php echo $this->_paginacion['total']; ?>
+			<br>
+			Registros por página:
+			<select id="registros" class='span1'>
+				<?php for($i = 10; $i <= 100; $i += 5): ?>
+					<option value='<?php echo $i; ?>' <?php if($i == $this->_paginacion['limite']){echo "selected = 'selected'";} ?>><?php echo $i; ?></option>
+				<?php endfor; ?>
+			</select>
+		</small>
+	</p>
+</div>
 <?php endif; ?>	
+
