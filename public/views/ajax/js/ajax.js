@@ -34,7 +34,7 @@ $(document).ready(function(){
           //console.log(data);
           $("#ins_ciudad").val('');
           getCiudades();
-            
+          alertify.success('Tus datos han sido insertados correctamente!'); //Mensaje de Datos Correctamente Insertados
         }); 
        //alert(" es 1 ");
         

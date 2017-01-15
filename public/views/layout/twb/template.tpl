@@ -4,6 +4,9 @@
         <title>{$titulo|default:"Sin t&iacute;tulo"}</title>
         <meta charset="utf-8">
         <link href="{$_layoutParams.ruta_css}bootstrap.css" rel="stylesheet" type="text/css">
+        <link href="{$_layoutParams.root}public/js/alertifyjs/css/alertify.css" rel="stylesheet" type="text/css"/>
+
+
         <style type="text/css">
         body{
             padding-top: 40px;
@@ -111,6 +114,8 @@
         <script type="text/javascript">
             var _root_ = '{$_layoutParams.root}';
         </script>
+        <script type="text/javascript" src="{$_layoutParams.root}public/js/alertifyjs/alertify.js"></script>
+
         
         {if isset($_layoutParams.js_plugin) && count($_layoutParams.js_plugin)}
             {foreach item=plg from=$_layoutParams.js_plugin}
