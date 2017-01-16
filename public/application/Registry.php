@@ -40,11 +40,5 @@ Class Registry
 
 
 }
-//request
-$registry = Registry::getInstancia();
-$registry->_request = new Request();
-//base de datos
-$registry->_db = new Database(DB_HOST, DB_NAME, DB_PORT, DB_USER, DB_PASS, DB_CHAR);
-//acl
-$registry->_acl = new ACL();
+
 

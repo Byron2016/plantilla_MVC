@@ -2,14 +2,17 @@
 
 class Paginador 
 {
+	private $_registry; //22
 	private $_datos; //registros devueltos
 	private $_paginacion; //datos de la paginacion
 	protected $_db;
-
+	
 	public function __construct() {
 		$this->_datos = array();
 		$this->_paginacion = array();
-		$this->_db = new Database();
+		//$this->_db = new Database(DB_HOST, DB_NAME, DB_PORT, DB_USER, DB_PASS, DB_CHAR); //22
+		$this->_registry = Registry::getInstancia(); //22
+		$this->_db = $this->_registry->_db;  //22
 	}
 
 	public function paginar($query, $pagina = false, $limite = false, $paginacion = false)

@@ -21,6 +21,12 @@ devuelve 1234
 try {
 
 require_once APP_PATH . 'Config.php';
+
+//function __autoload($class){ include APP_PATH . $class . '.php';;}
+
+require_once APP_PATH . 'Autoload.php';
+
+/*
 require_once APP_PATH . 'Acl.php';
 require_once APP_PATH . 'Request.php';
 require_once APP_PATH . 'Bootstrap.php';
@@ -32,7 +38,7 @@ require_once APP_PATH . 'DataBase.php';
 require_once APP_PATH . 'Session.php';
 require_once APP_PATH . 'Hash.php';
 require_once APP_PATH . 'Registry.php'; //al final para que pueda acceder a todas las clases
-
+*/
 //echo Hash::getHash('sha1','1234', HASH_KEY); exit; //testearlo con md5 reverse para ver si devuelve 1234.
 //sha1: f554564b63bfebedb20dab6c1e81132a44580761
 
@@ -40,7 +46,16 @@ require_once APP_PATH . 'Registry.php'; //al final para que pueda acceder a toda
 //echo "\n".'$_GET'."\n"; echo $_GET['url'];
 //echo "\n".'$_GET'."\n"; var_dump($_GET);
 //exit;
+
 Session::init();
+
+//request
+$registry = Registry::getInstancia();
+$registry->_request = new Request();
+//base de datos
+$registry->_db = new Database(DB_HOST, DB_NAME, DB_PORT, DB_USER, DB_PASS, DB_CHAR);
+//acl
+$registry->_acl = new ACL();
 
 	//Bootstrap::run(new Request); //22
 	Bootstrap::run($registry->_request); //22

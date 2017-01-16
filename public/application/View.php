@@ -1,6 +1,5 @@
 <?php 
   
-  
 if (SMARTY_PRUEBA == '1') { 
 	if (!class_exists('Smarty')) { 
     	include SMARTY_DIR_L . 'Smarty.class.php'; 
