@@ -3,6 +3,7 @@
 
 class ACL 
 {
+	private $_registry; //2
 	private $_db;
 	private $_id;
 	private $_role;
@@ -27,7 +28,10 @@ class ACL
 			}
 		}
 
-		$this->_db = new DataBase(); //echo "en 1"  . '<br>';
+		$this->_registry = Registry::getInstancia(); //22
+		$this->_db = $this->_registry->_db; //22
+
+		//$this->_db = new DataBase(); //22 //echo "en 1"  . '<br>';
 		$this->_role = $this->getRole(); //echo "en 2"  . '<br>';
 		$this->_permisos = $this->getPermisosRole(); //echo "en 3"  . '<br>';
 		$this->compilarAcl();  //echo "en 4"  . '<br>';

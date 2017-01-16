@@ -27,10 +27,11 @@ require_once APP_PATH . 'Bootstrap.php';
 require_once APP_PATH . 'Controller.php';
 require_once APP_PATH . 'Model.php';
 require_once APP_PATH . 'View.php';
-require_once APP_PATH . 'Registro.php';
+
 require_once APP_PATH . 'DataBase.php';
 require_once APP_PATH . 'Session.php';
 require_once APP_PATH . 'Hash.php';
+require_once APP_PATH . 'Registry.php'; //al final para que pueda acceder a todas las clases
 
 //echo Hash::getHash('sha1','1234', HASH_KEY); exit; //testearlo con md5 reverse para ver si devuelve 1234.
 //sha1: f554564b63bfebedb20dab6c1e81132a44580761
@@ -41,7 +42,8 @@ require_once APP_PATH . 'Hash.php';
 //exit;
 Session::init();
 
-	Bootstrap::run(new Request);
+	//Bootstrap::run(new Request); //22
+	Bootstrap::run($registry->_request); //22
 
 } catch(Exception $e) {
 	echo $e->getMessage();

@@ -2,15 +2,19 @@
 
 abstract class Controller
 {
+    private $_registry;  //22
 	protected $_view;
     protected $_acl;
     protected $_request;
 	
 	public function __construct()
 	{
-        $this->_acl = new ACL();
+        $this->_registry = Registry::getInstancia(); //22
+        //$this->_acl = new ACL(); //22
+        $this->_acl = $this->_registry->_acl; //22
         //echo "en controller", exit;
-        $this->_request = new Request();
+        //$this->_request = new Request(); //22
+        $this->_request = $this->_registry->_request; //22
 		$this->_view = new View($this->_request, $this->_acl);
 	}
 

@@ -2,6 +2,8 @@
 
 class DataBase extends  PDO
 {
+        /*
+        Antes hacer cambio para más de una base de datos //22
 	public function __construct()
 	{
 
@@ -23,4 +25,20 @@ class DataBase extends  PDO
         
 	}
 
+        */
+
+        public function __construct($host, $dbname,  $port, $user, $pass, $char)
+        {
+
+        parent::__construct(
+                'mysql:host=' . $host . 
+                ';dbname=' . $dbname.
+                ';port=' . $port,
+                $user, 
+                $pass, 
+                array(
+                PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES ' . $char 
+                ));
+        
+        }
 } 
