@@ -7,6 +7,7 @@ class postController extends Controller
     public function __construct() {
         parent::__construct();
         $this->_post = $this->loadModel('post');
+        $this->_view->setTemplate('test');
     }
     
     public function index($pagina = false)

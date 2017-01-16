@@ -25,6 +25,7 @@ class View extends Smarty
 	private $_acl;
 	private $_rutas;
 	private $_jsPlugin;
+    private $_template;
 
 	public function __construct(Request $peticion, ACL $_acl)
 	{
@@ -35,6 +36,7 @@ class View extends Smarty
 		$this->_acl = $_acl;
 		$this->_rutas = array();
 		$this->_jsPlugin = array();
+        $this->_template = DEFAULT_LAYOUT;
 
 		$modulo = $this->_request->getModulo();
 		$controlador = $this->_request->getControlador();
@@ -54,9 +56,9 @@ class View extends Smarty
 	{
 
 		if(USAR_SMARTY == '1'){
-            $this->template_dir = ROOT . 'views' . DS . 'layout' .DS . DEFAULT_LAYOUT . DS;
+            $this->template_dir = ROOT . 'views' . DS . 'layout' .DS . $this->_template . DS;
 
-			$this->config_dir = ROOT . 'views' . DS . 'layout' .DS . DEFAULT_LAYOUT . DS . 'configs' . DS ;
+			$this->config_dir = ROOT . 'views' . DS . 'layout' .DS . $this->_template . DS . 'configs' . DS ;
 
 			$this->cache_dir = ROOT . 'tmp' . DS . 'cache' .DS;
 
@@ -110,56 +112,6 @@ class View extends Smarty
             );
 		}
 
-        $menuRight = array(
-            array(
-                'id' => 'usuarios',
-                'titulo' => 'Usuarios',
-                'enlace' => BASE_URL . 'usuarios',
-                'imagen' => 'icon-user'
-                ),
-            
-            array(
-                'id' => 'acl',
-                'titulo' => 'Listas de control de acceso',
-                'enlace' => BASE_URL . 'acl',
-                'imagen' => 'icon-list-alt'
-                ),
-            
-            array(
-                'id' => 'ajax',
-                'titulo' => 'Ejemplo uso de AJAX',
-                'enlace' => BASE_URL . 'ajax',
-                'imagen' => 'icon-refresh'
-                ),
-            
-            array(
-                'id' => 'prueba',
-                'titulo' => 'Prueba paginaci&oacute;n',
-                'enlace' => BASE_URL . 'post/prueba',
-                'imagen' => 'icon-random'
-                ),
-
-            array(
-                'id' => 'prueba2',
-                'titulo' => 'Prueba paginaci&oacute;n con AJAX',
-                'enlace' => BASE_URL . 'post/prueba2',
-                'imagen' => 'icon-random'
-                ),
-            
-            array(
-                'id' => 'pdf',
-                'titulo' => 'Documento PDF 1',
-                'enlace' => BASE_URL . 'pdf/pdf1/param1/param2',
-                'imagen' => 'icon-file'
-                ),
-            
-            array(
-                'id' => 'pdf',
-                'titulo' => 'Documento PDF 2',
-                'enlace' => BASE_URL . 'pdf/pdf2/param1/param2',
-                'imagen' => 'icon-file'
-                )
-        );
 
 
 		$js = array();
@@ -172,11 +124,11 @@ class View extends Smarty
 
 		if(USAR_SMARTY == '1'){
             $_params = array(
-			'ruta_css' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/css/',
-			'ruta_img' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/img/',
-			'ruta_js' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/js/',
+			'ruta_css' => BASE_URL . 'views/layout/' . $this->_template . '/css/',
+			'ruta_img' => BASE_URL . 'views/layout/' . $this->_template . '/img/',
+			'ruta_js' => BASE_URL . 'views/layout/' . $this->_template . '/js/',
 			'menu' => $menu,
-			'menu_right' => $menuRight,
+			//'menu_right' => $menuRight, //comento para video 24 crear widget
 			'item' => $item,
             'js' => $js,
             'js_plugin' => $this->_jsPlugin,
@@ -191,16 +143,16 @@ class View extends Smarty
         } else {
 
             $_layoutParams = array(
-			'ruta_css' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/css/',
-			'ruta_img' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/img/',
-			'ruta_js' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/js/',
+			'ruta_css' => BASE_URL . 'views/layout/' . $this->_template . '/css/',
+			'ruta_img' => BASE_URL . 'views/layout/' . $this->_template . '/img/',
+			'ruta_js' => BASE_URL . 'views/layout/' . $this->_template . '/js/',
 			'menu' => $menu,
 			'menu_right' => $menuRight,
             'js' => $js
 			);
         }
 
-        //echo BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/img/'; exit;
+        //echo BASE_URL . 'views/layout/' . $this->_template . '/img/'; exit;
 
         /*
 
@@ -224,9 +176,9 @@ class View extends Smarty
             	$this->assign('_contenido',$this->_rutas['view'] . $vista . '.tpl');
         	} else {
 
-            	include_once ROOT . 'views' . DS . 'layout' . DS . DEFAULT_LAYOUT . DS . 'header.php';
+            	include_once ROOT . 'views' . DS . 'layout' . DS . $this->_template . DS . 'header.php';
 				include_once $this->_rutas['view'] . $vista . '.tpl';
-				include_once ROOT . 'views' . DS . 'layout' . DS . DEFAULT_LAYOUT . DS . 'footer.php';
+				include_once ROOT . 'views' . DS . 'layout' . DS . $this->_template . DS . 'footer.php';
         	}
 		} else {
 			throw new Exception ('Error View: Error de vista');
@@ -273,5 +225,44 @@ class View extends Smarty
         } else{
             throw new Exception('Error View: SetJS Error de js plugin'); 
         }
+    }
+
+    public function setTemplate($template)
+    {
+        $this->_template = (string) $template;
+    }
+
+    public function widget($widget, $method, $options = array())
+    {
+        //método q llama al widget
+        //este método actua como un bootstrap para los widgets
+        if(!is_array($options)){
+            $options = array($options);
+        }
+        if(is_readable(ROOT . 'widgets' . DS . $widget . '.php')){
+            include_once ROOT . 'widgets' . DS . $widget . '.php';
+            $widgetClass = $widget . 'widget';
+
+            if(!class_exists($widgetClass)){
+                throw new Exception('Error View: widget Error clase widget'); 
+
+            }
+            //echo '1' . $widgetClass . ' ' . $method . ' ';
+            if(is_callable($widgetClass, $method)){
+                //echo '3';
+                if(count($options)){
+                    return call_user_func_array(array(new $widgetClass, $method), $options);
+                }
+                else {
+                    return call_user_func(array(new $widgetClass, $method));
+                }
+                //echo '2';
+            }
+
+            throw new Exception('Error View: widget Error metodo widget'); 
+        }
+
+        throw new Exception('Error View: widget Error de widget'); 
+
     }
 }

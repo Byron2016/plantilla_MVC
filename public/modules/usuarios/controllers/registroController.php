@@ -9,6 +9,7 @@ class registroController extends Controller
 	{
 		parent::__construct();
 		$this->_registro = $this->loadModel('registro');
+		//$this->_view->setTemplate('test');
 	}
 
 	public function index()
