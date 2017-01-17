@@ -21,42 +21,53 @@
     </head>
     
     <body>
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <a class="brand" href="{$_layoutParams.root}">{$_layoutParams.configs.app_name}</a>
-                
-                    {if isset($_layoutParams.menu)}
-                        <div class="nav-collapse">
-                            <ul class="nav">
-                                {foreach item=it from=$_layoutParams.menu}
-                                    {if isset($_layoutParams.item) && $_layoutParams.item == $it.id}
-                                        {assign var="_item_style" value='active'}
-                                    {else}
-                                        {assign var="_item_style" value=''}
-                                    {/if}
+        {if $incluir_widget}
+            {if isset($widgets.top)}
+                {foreach item=tp from=$widgets.top}
+                    {$tp}
+                {/foreach}
+            {/if}
 
-                                    <li class="{$_item_style}"><a  href="{$it.enlace}"><i class="{$it.imagen}"> </i> {$it.titulo}</a></li>
-                                {/foreach}
-                            </ul>
-                            
-                            {if Session::get('autenticado')}
-                                <div class="navbar-form pull-right">
-                                    <a href="{$_layoutParams.root}usuarios/login/cerrar" class="btn"><i class="icon-fire"> </i> Salir</a>
-                                </div>
-                            {else}
-                                <form class="navbar-form pull-right" method="post" action="{$_layoutParams.root}usuarios/login">
-                                    <input type="hidden" value="1" name="enviar">
-                                    <input class="span2" name="usuario" type="text" placeholder="Usuario">
-                                    <input class="span2" name="pass" type="password" placeholder="Password">
-                                    <button type="submit" class="btn">Entrar</button>
-                                </form>
-                            {/if}
-                        </div>
-                    {/if}
+        {else}
+            <div class="navbar navbar-fixed-top">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <a class="brand" href="{$_layoutParams.root}">{$_layoutParams.configs.app_name}</a>
+                    
+                        {if isset($_layoutParams.menu)}
+                            <div class="nav-collapse">
+                                <ul class="nav">
+                                    {foreach item=it from=$_layoutParams.menu}
+                                        {if isset($_layoutParams.item) && $_layoutParams.item == $it.id}
+                                            {assign var="_item_style" value='active'}
+                                        {else}
+                                            {assign var="_item_style" value=''}
+                                        {/if}
+            
+                                        <li class="{$_item_style}"><a  href="{$it.enlace}"><i class="{$it.imagen}"> </i> {$it.titulo}</a></li>
+                                    {/foreach}
+                                </ul>
+                                
+                                {if Session::get('autenticado')}
+                                    <div class="navbar-form pull-right">
+                                        <a href="{$_layoutParams.root}usuarios/login/cerrar" class="btn"><i class="icon-fire"> </i> Salir</a>
+                                    </div>
+                                {else}
+                                    <form class="navbar-form pull-right" method="post" action="{$_layoutParams.root}usuarios/login">
+                                        <input type="hidden" value="1" name="enviar">
+                                        <input class="span2" name="usuario" type="text" placeholder="Usuario">
+                                        <input class="span2" name="pass" type="password" placeholder="Password">
+                                        <button type="submit" class="btn">Entrar</button>
+                                    </form>
+                                {/if}
+                            </div>
+                        {/if}
+                    </div>
                 </div>
             </div>
-        </div>
+        {/if}
+
+
                 
         <div style="background: #515151; height: 110px; margin-bottom: 20px; width: 100%;">
             <div class="container">

@@ -7,9 +7,9 @@ class menuModelWidget extends Model
 		parent::__construct();
 	}
 
-	public function getMenu()
+	public function getMenu($menu)
 	{
-		return   $menuRight['menu'] = array(
+		$menus['sidebar'] =  array(
             array(
                 'id' => 'usuarios',
                 'titulo' => 'Usuarios',
@@ -59,5 +59,55 @@ class menuModelWidget extends Model
                 'imagen' => 'icon-file'
                 )
         );
+
+        $menus['top'] = array(
+            array(
+                'id' => 'inicio',
+                'titulo' => 'Inicio',
+                'enlace' => BASE_URL,
+                'imagen' => 'icon-home'
+            ),
+
+            array(
+                'id' => 'hola',
+                'titulo' => 'Hola',
+                'enlace' => BASE_URL . 'hola',
+                'imagen' => 'icon-home'
+            ),
+
+            array(
+                'id' => 'post',
+                'titulo' => 'Post',
+                'enlace' => BASE_URL . 'post',
+                'imagen' => 'icon-flag'
+            )
+
+        );
+
+        if(Session::get('autenticado')){
+            $menus['top'][] = array(
+                'id' => 'login',
+                'titulo' => 'Cerrar Sesion',
+                'enlace' => BASE_URL . 'usuarios/login/cerrar',
+                'imagen' => 'icon-book'
+            );
+        } else {
+            /*
+            $menus['top'][] = array(
+                'id' => 'login',
+                'titulo' => 'Iniciar Sesion',
+                'enlace' => BASE_URL . 'usuarios/login',
+                'imagen' => 'icon-book'
+            );*/
+            
+            $menus['top'][] = array (
+                'id' => 'registro',
+                'titulo' => 'Registrar Usuario',
+                'enlace' => BASE_URL . 'usuarios/registro',
+                'imagen' => 'icon-book'
+            );
+        }
+
+        return $menus[$menu];
 	}
 }

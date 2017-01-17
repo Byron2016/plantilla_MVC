@@ -26,7 +26,8 @@ class View extends Smarty
 	private $_rutas;
 	private $_jsPlugin;
     private $_template;
-    private $_item;
+    static $_item;
+    private $_widget;
 
 	public function __construct(Request $peticion, ACL $_acl)
 	{
@@ -38,7 +39,7 @@ class View extends Smarty
 		$this->_rutas = array();
 		$this->_jsPlugin = array();
         $this->_template = DEFAULT_LAYOUT;
-        $this->_item = '';
+        self::$_item = null;
 
 		$modulo = $this->_request->getModulo();
 		$controlador = $this->_request->getControlador();
@@ -54,12 +55,19 @@ class View extends Smarty
 		}
 	}
 
+    public static function getViewId()
+    {
+        return self::$_item;
+    }
+
 	public function renderizar($vista, $item = false, $noLayout = false)
 	{
-        
-        if($item){
-            $this->_item = $item;
+        if($item)
+        {
+            self::$_item = $item;
         }
+        
+
         //print_r($this->getWidgets()); //para hacer prueba visualizacion widget
 
 		if(USAR_SMARTY == '1'){
@@ -72,6 +80,8 @@ class View extends Smarty
 			$this->compile_dir = ROOT . 'tmp' . DS . 'template' .DS;
         } 
 
+
+        if(INCLUIR_WIDGET == '0'){
 
 		$menu = array(
 			array(
@@ -96,28 +106,31 @@ class View extends Smarty
 			)
 		);
 
-		if(Session::get('autenticado')){
-			$menu[] = array(
-				'id' => 'login',
-				'titulo' => 'Cerrar Sesion',
-				'enlace' => BASE_URL . 'usuarios/login/cerrar',
-				'imagen' => 'icon-book'
-			);
-		} else {
-			$menu[] = array(
-				'id' => 'login',
-				'titulo' => 'Iniciar Sesion',
-				'enlace' => BASE_URL . 'usuarios/login',
-				'imagen' => 'icon-book'
-			);
-			
+        if(Session::get('autenticado')){
+            $menu[] = array(
+                'id' => 'login',
+                'titulo' => 'Cerrar Sesion',
+                'enlace' => BASE_URL . 'usuarios/login/cerrar',
+                'imagen' => 'icon-book'
+            );
+        } else {
+            $menu[] = array(
+                'id' => 'login',
+                'titulo' => 'Iniciar Sesion',
+                'enlace' => BASE_URL . 'usuarios/login',
+                'imagen' => 'icon-book'
+            );
+            
             $menu[] = array (
                 'id' => 'registro',
                 'titulo' => 'Registrar Usuario',
                 'enlace' => BASE_URL . 'usuarios/registro',
-				'imagen' => 'icon-book'
+                'imagen' => 'icon-book'
             );
-		}
+        }
+        }
+
+
 
         if(INCLUIR_WIDGET == '0'){
 
@@ -173,23 +186,12 @@ class View extends Smarty
         );
         }
 
-
-		$js = array();
-        
-        if(count($this->_js))
-        {
-            $js = $this->_js;
-        }
-
-
 		if(USAR_SMARTY == '1'){
             $_params0 = array(
                 'ruta_css' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/css/',
                 'ruta_img' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/img/',
                 'ruta_js' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/js/',
-                'menu' => $menu,
-                'item' => $this->_item,
-                'js' => $js,
+                'js' => $this->_js,
                 'js_plugin' => $this->_jsPlugin,
                 'root' => BASE_URL,
                 'configs' => array(
@@ -199,7 +201,11 @@ class View extends Smarty
                 )
             );
             if(INCLUIR_WIDGET == '0'){
-                $_params1 = array('menu_right' => $menuRight); 
+                $_params1 = array(
+                    'menu_right' => $menuRight,
+                    'menu' => $menu,
+                    'item' => self::$_item
+                    ); 
             } else {
                 $_params1 = array(); 
             }
@@ -213,7 +219,7 @@ class View extends Smarty
 			'ruta_js' => BASE_URL . 'views/layout/' . $this->_template . '/js/',
 			'menu' => $menu,
 			'menu_right' => $menuRight,
-            'js' => $js
+            'js' => $this->_js
 			);
         }
 
@@ -229,6 +235,7 @@ class View extends Smarty
         */
 
         //echo '<pre>'; print_r($this->_rutas); exit;
+        //echo $this->_rutas['view'] . $vista . '.tpl'; exit;
 
 		if(is_readable($this->_rutas['view'] . $vista . '.tpl')){
             if($noLayout){
@@ -239,6 +246,7 @@ class View extends Smarty
 			
 			if(USAR_SMARTY == '1'){
             	$this->assign('_contenido',$this->_rutas['view'] . $vista . '.tpl');
+
         	} else {
 
             	include_once ROOT . 'views' . DS . 'layout' . DS . $this->_template . DS . 'header.php';
@@ -246,7 +254,7 @@ class View extends Smarty
 				include_once ROOT . 'views' . DS . 'layout' . DS . $this->_template . DS . 'footer.php';
         	}
 		} else {
-			throw new Exception ('Error View: Error de vista');
+			throw new Exception ('Error View renderizar: Error de vista');
 		}
 
 		
@@ -349,23 +357,39 @@ class View extends Smarty
 
     public function getWidgets()
     {
+        //echo "entro a getWidgets <br>"; 
+
         $widgets = array(
             'menu-sidebar' => array(
-                'config' => $this->widget('menu','getConfig'),
-                'content' => array('menu','getMenu')
+                'config' => $this->widget('menu','getConfig', array('sidebar')),
+                'content' => array('menu','getMenu', array('sidebar','sidebar')) //se manda el menu y la vista
+            ),
+            'menu-top' => array(
+                'config' => $this->widget('menu','getConfig', array('top')),
+                'content' => array('menu','getMenu', array('top', 'top'))
             )
-        );
+        ); 
 
         $positions = $this->getLayoutPositions();
         $keys = array_keys($widgets);
+        //echo "widgets <br>"; var_dump($widgets); 
+        //echo "pos  <br>"; var_dump($positions); 
+        //echo "keys <br>";var_dump($keys); 
+        //echo "antes for ";
 
         foreach ($keys as $k) {
             /*verificar si la posición del widget está presente*/
+            //echo $positions[$widgets[$k]['config']['position']]; exit;
             if(isset($positions[$widgets[$k]['config']['position']])){
                 /* verificar si está deshabilitado para la vista*/
-                if(!isset($widgets[$k]['config']['hide']) || !in_array($this->_item, $widgets[$k]['config']['hide'])){
+                if(!isset($widgets[$k]['config']['hide']) || !in_array(self::$_item, $widgets[$k]['config']['hide'])){
                     /*verificar si esta habilitado para la vista*/
-                    if($widgets[$k]['config']['show'] =='all' || in_array($this->_item, $widgets[$k]['config']['show'])){
+                    if($widgets[$k]['config']['show'] =='all' || in_array(self::$_item, $widgets[$k]['config']['show'])){
+
+                        if(isset($this->_widget[$k]))
+                        {
+                            $widgets[$k]['content'][2] = $this->_widget[$k];
+                        }
                         /*llenar la posicion del layout*/
                         $positions[$widgets[$k]['config']['position']][] = $this->getWidgetsContent($widgets[$k]['content']);
                     }
@@ -386,5 +410,10 @@ class View extends Smarty
             $content[2] = array();
         }
         return $this->widget($content[0],$content[1],$content[2]);
+    }
+
+    public function setWidgetOptions($key, $options)
+    {
+        $this->_widget[$key] = $options;
     }
 }
