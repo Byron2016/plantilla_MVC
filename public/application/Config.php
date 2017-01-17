@@ -8,6 +8,7 @@ define('BASE_URL', 'http://plantilla_mvc.net/'); //CONSTANTE PARA INCLUIR ARCHIV
 //define('DEFAULT_LAYOUT', 'default');
 //define('DEFAULT_LAYOUT', 'layout1');
 define('DEFAULT_LAYOUT', 'twb');
+//define('DEFAULT_LAYOUT', 'test');
 define('APP_NAME', 'mi framework');
 define('APP_SLOGAN', 'mi primer fr php mvc');
 define('APP_COMPANY', 'dlancedu.com');
@@ -30,3 +31,7 @@ define('HASH_KEY', '5806aed8e2552');
 define('SMARTY_DIR_L', ROOT . 'libs' . DS . 'smarty' . DS .  'libs' . DS); 
 define('SMARTY_PRUEBA', '0' ); 
 define('USAR_SMARTY', '1');
+
+
+//widget
+define('INCLUIR_WIDGET', '1');

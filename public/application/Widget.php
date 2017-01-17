@@ -7,7 +7,7 @@ abstract class Widget
     {
     	if(is_readable(ROOT . 'widgets' . DS . 'models' . DS . $model . '.php')){
     		include_once ROOT . 'widgets' . DS . 'models' . DS . $model . '.php';
-    		$modelClass = $model . 'widget';
+    		$modelClass = $model . 'Modelwidget';
     		if(class_exists($modelClass)){
     			return new $modelClass;
     		}

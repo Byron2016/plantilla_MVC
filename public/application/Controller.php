@@ -16,6 +16,7 @@ abstract class Controller
         //$this->_request = new Request(); //22
         $this->_request = $this->_registry->_request; //22
 		$this->_view = new View($this->_request, $this->_acl);
+        $this->_view->assign('incluir_widget', INCLUIR_WIDGET); //variable para saber si se debe o no incluir widget.
 	}
 
 	abstract public function index();

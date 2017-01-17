@@ -1,4 +1,5 @@
 <?php
+
 //ini_set('display_errors',1);
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', realpath(dirname(__FILE__)) . DS);
@@ -21,6 +22,7 @@ devuelve 1234
 try {
 
 require_once APP_PATH . 'Config.php';
+
 
 //function __autoload($class){ include APP_PATH . $class . '.php';;}
 
@@ -56,6 +58,7 @@ $registry->_request = new Request();
 $registry->_db = new Database(DB_HOST, DB_NAME, DB_PORT, DB_USER, DB_PASS, DB_CHAR);
 //acl
 $registry->_acl = new ACL();
+
 
 	//Bootstrap::run(new Request); //22
 	Bootstrap::run($registry->_request); //22

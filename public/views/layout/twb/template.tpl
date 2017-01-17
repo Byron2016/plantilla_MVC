@@ -82,25 +82,35 @@
                         {$_mensaje}
                     </div>
                 {/if}
-
                 {include file=$_contenido}
             </div>
             
+ 
             <div class="span3">
-                {if isset($_layoutParams.menu_right)}
-                    <ul class="nav nav-tabs nav-stacked">
-                        {foreach item=it from=$_layoutParams.menu_right}
-                            {if isset($_layoutParams.item) && $_layoutParams.item == $it.id}
-                                {assign var="_style" value='active'}
-                            {else}
-                                {assign var="_style" value=''}
-                            {/if}
-
-                            <li class="{$_style}"><a  href="{$it.enlace}"><i class="{$it.imagen}"> </i> {$it.titulo}</a></li>
+                {if $incluir_widget}
+                    {if isset($widgets.sidebar)}
+                        {foreach item=wd from=$widgets.sidebar}
+                            {$wd}
                         {/foreach}
-                    </ul>
+                    {/if}
+
+                {else}
+                    {if isset($_layoutParams.menu_right)}
+                        <ul class="nav nav-tabs nav-stacked">
+                            {foreach item=it from=$_layoutParams.menu_right}
+                                {if isset($_layoutParams.item) && $_layoutParams.item == $it.id}
+                                    {assign var="_style" value='active'}
+                                {else}
+                                    {assign var="_style" value=''}
+                                {/if}
+                                
+                                <li class="{$_style}"><a  href="{$it.enlace}"><i class="{$it.imagen}"> </i> {$it.titulo}</a></li>
+                            {/foreach}
+                           
+                        </ul>
+                    {/if}
                 {/if}
-            </div>
+            </div> 
         </div>
         
         <!-- Footer -->

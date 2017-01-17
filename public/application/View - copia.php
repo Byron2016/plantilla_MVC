@@ -26,7 +26,6 @@ class View extends Smarty
 	private $_rutas;
 	private $_jsPlugin;
     private $_template;
-    private $_item;
 
 	public function __construct(Request $peticion, ACL $_acl)
 	{
@@ -38,7 +37,6 @@ class View extends Smarty
 		$this->_rutas = array();
 		$this->_jsPlugin = array();
         $this->_template = DEFAULT_LAYOUT;
-        $this->_item = '';
 
 		$modulo = $this->_request->getModulo();
 		$controlador = $this->_request->getControlador();
@@ -56,11 +54,6 @@ class View extends Smarty
 
 	public function renderizar($vista, $item = false, $noLayout = false)
 	{
-        
-        if($item){
-            $this->_item = $item;
-        }
-        //print_r($this->getWidgets()); //para hacer prueba visualizacion widget
 
 		if(USAR_SMARTY == '1'){
             $this->template_dir = ROOT . 'views' . DS . 'layout' .DS . $this->_template . DS;
@@ -119,9 +112,15 @@ class View extends Smarty
             );
 		}
 
-        if(INCLUIR_WIDGET == '0'){
 
-        $menuRight = array(
+
+		$js = array();
+        
+        if(count($this->_js))
+        {
+            $js = $this->_js;
+        }
+                $menuRight['menu'] = array(
             array(
                 'id' => 'usuarios',
                 'titulo' => 'Usuarios',
@@ -170,42 +169,42 @@ class View extends Smarty
                 'enlace' => BASE_URL . 'pdf/pdf2/param1/param2',
                 'imagen' => 'icon-file'
                 )
-        );
-        }
-
-
-		$js = array();
-        
-        if(count($this->_js))
-        {
-            $js = $this->_js;
-        }
+            );
 
 
 		if(USAR_SMARTY == '1'){
             $_params0 = array(
-                'ruta_css' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/css/',
-                'ruta_img' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/img/',
-                'ruta_js' => BASE_URL . 'views/layout/' . DEFAULT_LAYOUT . '/js/',
-                'menu' => $menu,
-                'item' => $this->_item,
-                'js' => $js,
-                'js_plugin' => $this->_jsPlugin,
-                'root' => BASE_URL,
-                'configs' => array(
-                    'app_name' =>APP_NAME,
-                    'app_slogan' => APP_SLOGAN,
-                    'app_company' => APP_COMPANY
-                )
+			'ruta_css' => BASE_URL . 'views/layout/' . $this->_template . '/css/',
+			'ruta_img' => BASE_URL . 'views/layout/' . $this->_template . '/img/',
+			'ruta_js' => BASE_URL . 'views/layout/' . $this->_template . '/js/',
+			'menu' => $menu,
+            'menu_right' => $menuRight,
+            'item' => $item,
+            'js' => $js,
+            'js_plugin' => $this->_jsPlugin,
+            'root' => BASE_URL,
+            'configs' => array(
+                'app_name' =>APP_NAME,
+                'app_slogan' => APP_SLOGAN,
+                'app_company' => APP_COMPANY
+            )
             );
-            if(INCLUIR_WIDGET == '0'){
-                $_params1 = array('menu_right' => $menuRight); 
+            if (INCLUIR_WIDGET != '1') { 
+
+        
+                $_params1 = array(
+                'menu_right11' => $menuRight //comento para video 24 crear widget
+                );
+                
+
             } else {
-                $_params1 = array(); 
+                $_params1 = array();
             }
+
+
             $_params = array_merge($_params0, $_params1);
-        } 
-        else {
+            //var_dump($_params); exit;
+        } else {
 
             $_layoutParams = array(
 			'ruta_css' => BASE_URL . 'views/layout/' . $this->_template . '/css/',
@@ -230,14 +229,19 @@ class View extends Smarty
 
         //echo '<pre>'; print_r($this->_rutas); exit;
 
+        //echo 'llego3'; //exit;
+
 		if(is_readable($this->_rutas['view'] . $vista . '.tpl')){
+            //echo 'a';
             if($noLayout){
                 $this->template_dir = $this->_rutas['view'];
+                exit;
                 $this->display( $this->_rutas['view'] . $vista . '.tpl');
                 exit;
             }
 			
 			if(USAR_SMARTY == '1'){
+                //echo 'b';
             	$this->assign('_contenido',$this->_rutas['view'] . $vista . '.tpl');
         	} else {
 
@@ -249,12 +253,12 @@ class View extends Smarty
 			throw new Exception ('Error View: Error de vista');
 		}
 
+        //echo 'llego4'; exit;
+
+
+
 		
 		if(USAR_SMARTY == '1'){
-            if(INCLUIR_WIDGET == '1'){
-                $this->assign('widgets', $this->getWidgets());
-            }
-            
 			$this->assign('_acl', $this->_acl);
             $this->assign('_layoutParams', $_params);
             $this->display('template.tpl');
@@ -294,7 +298,6 @@ class View extends Smarty
         } else{
             throw new Exception('Error View: SetJS Error de js plugin'); 
         }
-
     }
 
     public function setTemplate($template)
@@ -336,7 +339,6 @@ class View extends Smarty
 
     }
 
-
     public function getLayoutPositions()
     {
         if(is_readable(ROOT . 'views' . DS . 'layout' . DS . $this->_template . DS . 'configs.php')){
@@ -345,46 +347,5 @@ class View extends Smarty
 
         }
         throw new Exception('Error View: getLayoutPositions Error de configruacion layout'); 
-    }
-
-    public function getWidgets()
-    {
-        $widgets = array(
-            'menu-sidebar' => array(
-                'config' => $this->widget('menu','getConfig'),
-                'content' => array('menu','getMenu')
-            )
-        );
-
-        $positions = $this->getLayoutPositions();
-        $keys = array_keys($widgets);
-
-        foreach ($keys as $k) {
-            /*verificar si la posición del widget está presente*/
-            if(isset($positions[$widgets[$k]['config']['position']])){
-                /* verificar si está deshabilitado para la vista*/
-                if(!isset($widgets[$k]['config']['hide']) || !in_array($this->_item, $widgets[$k]['config']['hide'])){
-                    /*verificar si esta habilitado para la vista*/
-                    if($widgets[$k]['config']['show'] =='all' || in_array($this->_item, $widgets[$k]['config']['show'])){
-                        /*llenar la posicion del layout*/
-                        $positions[$widgets[$k]['config']['position']][] = $this->getWidgetsContent($widgets[$k]['content']);
-                    }
-                }
-            }
-        }
-
-        return $positions;
-    }
-
-    public function getWidgetsContent(array $content)
-    {
-        //verfiicar si se está enviado el widget y el lmétodo
-        if(!isset($content[0]) || !isset($content[1])){
-            throw new Exception('Error View: getWidgetsContent Error de contenido widget');
-        }
-        if(!isset($content[2])){
-            $content[2] = array();
-        }
-        return $this->widget($content[0],$content[1],$content[2]);
     }
 }
