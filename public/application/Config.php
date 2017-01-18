@@ -7,7 +7,8 @@ define('BASE_URL', 'http://plantilla_mvc.net/'); //CONSTANTE PARA INCLUIR ARCHIV
 
 //define('DEFAULT_LAYOUT', 'default');
 //define('DEFAULT_LAYOUT', 'layout1');
-define('DEFAULT_LAYOUT', 'twb');
+//define('DEFAULT_LAYOUT', 'twb');
+define('DEFAULT_LAYOUT', 'twb-R');
 //define('DEFAULT_LAYOUT', 'test');
 define('APP_NAME', 'mi framework');
 define('APP_SLOGAN', 'mi primer fr php mvc');

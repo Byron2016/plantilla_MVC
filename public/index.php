@@ -61,6 +61,7 @@ $registry->_acl = new ACL();
 
 
 	//Bootstrap::run(new Request); //22
+	
 	Bootstrap::run($registry->_request); //22
 
 } catch(Exception $e) {

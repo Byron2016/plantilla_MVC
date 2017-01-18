@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -60,7 +61,7 @@
                     </div>
                 </div>
             </div>
-        {/if}
+        {/if} <!-- incluir_widget --> 
 
 
                 
@@ -72,7 +73,9 @@
         </div>
         
         <div class="container" style="background: #fff;">
-            <div class="span8">
+<div class="row">
+
+            <div class="col-sm-8">
                 <noscript><p>Para el correcto funcionamiento debe tener el soporte para javascript habilitado</p></noscript>
                     
                 {if isset($_error)}
@@ -89,10 +92,9 @@
                     </div>
                 {/if}
                 {include file=$_contenido}
-            </div>
+            </div> <!-- span8 --> 
             
- 
-            <div class="span3">
+             <div class="col-sm-3">
                 {if $incluir_widget}
                     {if isset($widgets.sidebar)}
                         {foreach item=wd from=$widgets.sidebar}
@@ -116,7 +118,8 @@
                         </ul>
                     {/if}
                 {/if}
-            </div> 
+            </div> <!-- span3 --> 
+</div>
         </div>
         
         <!-- Footer -->
@@ -131,8 +134,6 @@
         <!-- javascript -->
         <script type="text/javascript" src="{$_layoutParams.root}public/js/jquery.js"></script>
         <script type="text/javascript" src="{$_layoutParams.ruta_js}bootstrap.js"></script>
-        {*<script type="text/javascript" src="{$_layoutParams.ruta_js}bootstrap_v2_1_1.js"></script>*}
-        {*<script type="text/javascript" src="{$_layoutParams.ruta_js}bootstrap_v3_3_7.js"></script>*}
         {*<script type="text/javascript" src="{$_layoutParams.root}public/js/alertifyjs/alertify.js"></script> *}
         {* <script type="text/javascript" src="{$_layoutParams.root}public/js/jquery.validate.js"></script> *}
         

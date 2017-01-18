@@ -14,7 +14,7 @@ class menuModelWidget extends Model
                 'id' => 'usuarios',
                 'titulo' => 'Usuarios',
                 'enlace' => BASE_URL . 'usuarios',
-                'imagen' => 'icon-user'
+                'imagen' => 'glyphicon-user'
                 ),
             
             array(

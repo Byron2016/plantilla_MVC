@@ -1,14 +1,15 @@
-<ul class="nav nav-tabs nav-stacked">
+<div class="list-group">
+
     <?php foreach ($menu as $m): ?>
         <?php if(isset($id)): ?>
-            <?php $_style = 'active'; ?>
+            <?php $_style = 'list-group-item active'; ?>
         <?php else: ?>
-            <?php $_style = ''; ?>
+            <?php $_style = 'list-group-item'; ?>
         <?php endif ?>
+
+        <a href="<?php echo $m['enlace']; ?>" class="<?php echo $_style; ?>"> <?php echo $m['titulo']; ?></a>
         
-        <li class="<?php echo $_style; ?>">
-        	<a  href="<?php echo $m['enlace']; ?>"><i class="<?php echo $m['imagen']; ?>"> </i> <?php echo $m['titulo']; ?></a>
-        </li>
+
     <?php endforeach; ?>
-   
-</ul>
+
+</div>
